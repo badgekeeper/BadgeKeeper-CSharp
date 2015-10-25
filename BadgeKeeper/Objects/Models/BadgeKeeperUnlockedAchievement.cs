@@ -18,7 +18,7 @@ namespace BadgeKeeper.Objects.Models
     /// Extended BadgeKeeperUserAchievement. Sends when user hit achievement.
     /// Contains extra information about rewards for specified user.
     /// </summary>
-    class BadgeKeeperUnlockedAchievement
+    public class BadgeKeeperUnlockedAchievement
     {
         public readonly BadgeKeeperReward[] Rewards;
     }

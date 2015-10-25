@@ -17,7 +17,7 @@ namespace BadgeKeeper.Objects.Models
     /// <summary>
     /// Present general element in Badge Keeper service - achievement.
     /// </summary>
-    class BadgeKeeperAchievement
+    public class BadgeKeeperAchievement
     {
         public readonly string DisplayName;
         public readonly string Description;

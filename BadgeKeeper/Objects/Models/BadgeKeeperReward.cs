@@ -17,7 +17,7 @@ namespace BadgeKeeper.Objects.Models
     /// <summary>
     /// Present reward element in Badge Keeper service.
     /// </summary>
-    class BadgeKeeperReward
+    public class BadgeKeeperReward
     {
         public readonly string Name;
         public readonly double Value;

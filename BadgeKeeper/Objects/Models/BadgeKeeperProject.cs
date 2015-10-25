@@ -17,7 +17,7 @@ namespace BadgeKeeper.Objects.Models
     /// <summary>
     /// Contains all information about Project in Badge Keeper service.
     /// </summary>
-    class BadgeKeeperProject
+    public class BadgeKeeperProject
     {
         public readonly string Title;
         public readonly string Description;

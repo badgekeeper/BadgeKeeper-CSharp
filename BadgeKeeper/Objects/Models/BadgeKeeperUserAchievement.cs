@@ -18,7 +18,7 @@ namespace BadgeKeeper.Objects.Models
     /// Extended BadgeKeeperAchievement for User.
     /// Contains extra field with status achievement for specified user.
     /// </summary>
-    class BadgeKeeperUserAchievement : BadgeKeeperAchievement
+    public class BadgeKeeperUserAchievement : BadgeKeeperAchievement
     {
         public readonly bool IsUnlocked;
     }

@@ -12,22 +12,20 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-namespace BadgeKeeper.Objects
+namespace BadgeKeeper.Network
 {
-    public class BadgeKeeperPair<K, V>
+    /// <summary>
+    /// Error details in case of bad request
+    /// </summary>
+    public class BadgeKeeperResponseError
     {
-        public BadgeKeeperPair()
+        public int Code;
+        public string Message;
+
+        public BadgeKeeperResponseError(int code, string message)
         {
+            Code = code;
+            Message = message;
         }
-
-        public BadgeKeeperPair(K key, V value)
-        {
-            Key = key;
-            Value = value;
-        }
-
-        public K Key { get; set; }
-        public V Value { get; set; }
-
     }
 }

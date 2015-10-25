@@ -12,22 +12,20 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-namespace BadgeKeeper.Objects
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace BadgeKeeper.Network
 {
-    public class BadgeKeeperPair<K, V>
+    /// <summary>
+    /// Main class that represent response from Badge Keeper service
+    /// </summary>
+    public class BadgeKeeperResponse<ResponseType>
     {
-        public BadgeKeeperPair()
-        {
-        }
-
-        public BadgeKeeperPair(K key, V value)
-        {
-            Key = key;
-            Value = value;
-        }
-
-        public K Key { get; set; }
-        public V Value { get; set; }
-
+        public BadgeKeeperResponseError Error;
+        public ResponseType Result;
     }
 }
