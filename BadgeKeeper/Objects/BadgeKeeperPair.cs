@@ -12,13 +12,22 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-namespace BadgeKeeper.Models
+namespace BadgeKeeper.Objects
 {
-    class BadgeKeeperAchievement
+    class BadgeKeeperPair<K, V>
     {
-        public readonly string DisplayName;
-        public readonly string Description;
-        public readonly string UnlockedIcon;
-        public readonly string LockedIcon;
+        public BadgeKeeperPair()
+        {
+        }
+
+        public BadgeKeeperPair(K key, V value)
+        {
+            Key = key;
+            Value = value;
+        }
+
+        public K Key { get; set; }
+        public V Value { get; set; }
+
     }
 }

@@ -12,11 +12,16 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-namespace BadgeKeeper.Models
+namespace BadgeKeeper.Objects.Models
 {
-    class BadgeKeeperReward
+    /// <summary>
+    /// Contains all information about Project in Badge Keeper service.
+    /// </summary>
+    class BadgeKeeperProject
     {
-        public readonly string Name;
-        public readonly double Value;
+        public readonly string Title;
+        public readonly string Description;
+        public readonly string Icon;
+        public readonly BadgeKeeperAchievement[] Achievements;
     }
 }

@@ -12,10 +12,14 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-namespace BadgeKeeper.Models
+namespace BadgeKeeper.Objects.Models
 {
-    class BadgeKeeperUserAchievement : BadgeKeeperAchievement
+    /// <summary>
+    /// Present reward element in Badge Keeper service.
+    /// </summary>
+    class BadgeKeeperReward
     {
-        public readonly bool IsUnlocked;
+        public readonly string Name;
+        public readonly double Value;
     }
 }
