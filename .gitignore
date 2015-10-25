@@ -15,3 +15,5 @@ packages/
 *.idb
 *.opensdf
 *.exp
+*.nupkg
+nuget.exe

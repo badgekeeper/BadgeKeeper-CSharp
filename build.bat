@@ -1,0 +1,1 @@
+nuget.exe pack BadgeKeeper/BadgeKeeper.csproj -Build -Properties Configuration=Release
