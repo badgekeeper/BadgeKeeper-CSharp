@@ -1,0 +1,17 @@
+BadgeKeeper/.vs
+BadgeKeeper/bin
+BadgeKeeper/obj
+BadgeKeeper/csx
+BadgeKeeper/rcf
+packages/
+*.dbmdl
+*.log
+*.v12.suo
+*.ccproj.user
+*.csproj.user
+*.sqlproj.user
+*.sdf
+*.tlog
+*.idb
+*.opensdf
+*.exp
