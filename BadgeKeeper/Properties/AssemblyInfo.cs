@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 [assembly: AssemblyTitle("BadgeKeeper")]
-[assembly: AssemblyDescription("Badge Keeper Windows & Windows Phone client library. Easily add achievements to your app.")]
+[assembly: AssemblyDescription("Badge Keeper Windows and Windows Phone client library. Easily add achievements to your app.")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Badge Keeper")]
 [assembly: AssemblyProduct("BadgeKeeper")]
