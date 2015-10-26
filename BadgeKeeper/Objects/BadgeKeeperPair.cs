@@ -14,19 +14,38 @@
 
 namespace BadgeKeeper.Objects
 {
+    /// <summary>
+    /// Badge Keeper key-value pair class.
+    /// </summary>
+    /// <typeparam name="K">Generic key</typeparam>
+    /// <typeparam name="V">Generic value</typeparam>
     public class BadgeKeeperPair<K, V>
     {
+        /// <summary>
+        /// Default c-tor
+        /// </summary>
         public BadgeKeeperPair()
         {
         }
 
+        /// <summary>
+        /// C-tor with key and value parameters
+        /// </summary>
+        /// <param name="key"></param>
+        /// <param name="value"></param>
         public BadgeKeeperPair(K key, V value)
         {
             Key = key;
             Value = value;
         }
 
+        /// <summary>
+        /// Pair key
+        /// </summary>
         public K Key { get; set; }
+        /// <summary>
+        /// Pair value
+        /// </summary>
         public V Value { get; set; }
 
     }

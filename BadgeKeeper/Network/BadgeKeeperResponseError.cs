@@ -19,9 +19,20 @@ namespace BadgeKeeper.Network
     /// </summary>
     public class BadgeKeeperResponseError
     {
+        /// <summary>
+        /// Error code in case of bad request.
+        /// </summary>
         public int Code;
+        /// <summary>
+        /// Error message in case of bad request.
+        /// </summary>
         public string Message;
 
+        /// <summary>
+        /// C-tor with error code and error message.
+        /// </summary>
+        /// <param name="code"></param>
+        /// <param name="message"></param>
         public BadgeKeeperResponseError(int code, string message)
         {
             Code = code;

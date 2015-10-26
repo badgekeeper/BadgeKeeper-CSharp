@@ -19,7 +19,13 @@ namespace BadgeKeeper.Network
     /// </summary>
     public class BadgeKeeperResponse<ResponseType>
     {
+        /// <summary>
+        /// Error objects. Null if response delivered successfully. Otherwise not null.
+        /// </summary>
         public BadgeKeeperResponseError Error;
+        /// <summary>
+        /// Generic body response from Badge Keeper service.
+        /// </summary>
         public ResponseType Result;
     }
 }

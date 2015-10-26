@@ -19,9 +19,21 @@ namespace BadgeKeeper.Objects.Models
     /// </summary>
     public class BadgeKeeperProject
     {
+        /// <summary>
+        /// Badge Keeper project title.
+        /// </summary>
         public readonly string Title;
+        /// <summary>
+        /// Badge Keeper project description.
+        /// </summary>
         public readonly string Description;
+        /// <summary>
+        /// Badge Keeper project icon.
+        /// </summary>
         public readonly string Icon;
+        /// <summary>
+        /// Array of Badge Keeper achievements.
+        /// </summary>
         public readonly BadgeKeeperAchievement[] Achievements;
     }
 }
