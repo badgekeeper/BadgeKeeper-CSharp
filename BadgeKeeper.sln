@@ -3,21 +3,21 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.23107.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BadgeKeeper", "BadgeKeeper.csproj", "{325EC0F9-5E21-4AEC-AB47-C03AF096E686}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BadgeKeeper", "BadgeKeeper\BadgeKeeper.csproj", "{325EC0F9-5E21-4AEC-AB47-C03AF096E686}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "BadgeKeeper.Sample", "BadgeKeeper.Sample", "{D8CED53A-A457-49DF-A734-CE54597BA0AF}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "BadgeKeeper.Sample", "BadgeKeeper\BadgeKeeper.Sample", "{D8CED53A-A457-49DF-A734-CE54597BA0AF}"
 EndProject
-Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "BadgeKeeper.Sample.Shared", "..\BadgeKeeper.Sample\BadgeKeeper.Sample.Shared\BadgeKeeper.Sample.Shared.shproj", "{9E7C2754-AD6E-4B1B-BB9C-EDDC0DE1FE11}"
+Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "BadgeKeeper.Sample.Shared", "BadgeKeeper.Sample\BadgeKeeper.Sample.Shared\BadgeKeeper.Sample.Shared.shproj", "{9E7C2754-AD6E-4B1B-BB9C-EDDC0DE1FE11}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BadgeKeeper.Sample.Windows", "..\BadgeKeeper.Sample\BadgeKeeper.Sample.Windows\BadgeKeeper.Sample.Windows.csproj", "{431670D0-EA92-435A-86FE-BD0993AD0699}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BadgeKeeper.Sample.Windows", "BadgeKeeper.Sample\BadgeKeeper.Sample.Windows\BadgeKeeper.Sample.Windows.csproj", "{431670D0-EA92-435A-86FE-BD0993AD0699}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BadgeKeeper.Sample.WindowsPhone", "..\BadgeKeeper.Sample\BadgeKeeper.Sample.WindowsPhone\BadgeKeeper.Sample.WindowsPhone.csproj", "{536440BD-1B8D-405B-A60B-6C41883F206F}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BadgeKeeper.Sample.WindowsPhone", "BadgeKeeper.Sample\BadgeKeeper.Sample.WindowsPhone\BadgeKeeper.Sample.WindowsPhone.csproj", "{536440BD-1B8D-405B-A60B-6C41883F206F}"
 EndProject
 Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
-		..\BadgeKeeper.Sample\BadgeKeeper.Sample.Shared\BadgeKeeper.Sample.Shared.projitems*{9e7c2754-ad6e-4b1b-bb9c-eddc0de1fe11}*SharedItemsImports = 13
-		..\BadgeKeeper.Sample\BadgeKeeper.Sample.Shared\BadgeKeeper.Sample.Shared.projitems*{431670d0-ea92-435a-86fe-bd0993ad0699}*SharedItemsImports = 4
-		..\BadgeKeeper.Sample\BadgeKeeper.Sample.Shared\BadgeKeeper.Sample.Shared.projitems*{536440bd-1b8d-405b-a60b-6c41883f206f}*SharedItemsImports = 4
+		BadgeKeeper.Sample\BadgeKeeper.Sample.Shared\BadgeKeeper.Sample.Shared.projitems*{9e7c2754-ad6e-4b1b-bb9c-eddc0de1fe11}*SharedItemsImports = 13
+		BadgeKeeper.Sample\BadgeKeeper.Sample.Shared\BadgeKeeper.Sample.Shared.projitems*{431670d0-ea92-435a-86fe-bd0993ad0699}*SharedItemsImports = 4
+		BadgeKeeper.Sample\BadgeKeeper.Sample.Shared\BadgeKeeper.Sample.Shared.projitems*{536440bd-1b8d-405b-a60b-6c41883f206f}*SharedItemsImports = 4
 	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU

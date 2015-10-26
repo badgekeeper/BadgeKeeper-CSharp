@@ -20,6 +20,9 @@ namespace BadgeKeeper.Objects.Models
     /// </summary>
     public class BadgeKeeperUserAchievement : BadgeKeeperAchievement
     {
+        /// <summary>
+        /// If True - user unlocked the achievement. Otherwise - False.
+        /// </summary>
         public readonly bool IsUnlocked;
     }
 }

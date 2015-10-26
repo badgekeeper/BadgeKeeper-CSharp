@@ -19,8 +19,15 @@ namespace BadgeKeeper.Exceptions
     /// </summary>
     public class BadgeKeeperException : System.Exception
     {
+        /// <summary>
+        /// Default c-tor
+        /// </summary>
         public BadgeKeeperException(): base() { }
 
+        /// <summary>
+        /// C-tor with message information.
+        /// </summary>
+        /// <param name="message"></param>
         public BadgeKeeperException(string message) : base(message) { }
     }
 }

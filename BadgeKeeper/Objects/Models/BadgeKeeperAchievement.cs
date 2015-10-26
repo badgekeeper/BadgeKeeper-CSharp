@@ -19,9 +19,21 @@ namespace BadgeKeeper.Objects.Models
     /// </summary>
     public class BadgeKeeperAchievement
     {
+        /// <summary>
+        /// Title of Achievement.
+        /// </summary>
         public readonly string DisplayName;
+        /// <summary>
+        /// Description of Achievement.
+        /// </summary>
         public readonly string Description;
+        /// <summary>
+        /// Base64 string of unlocked icon for achievement if exist.
+        /// </summary>
         public readonly string UnlockedIcon;
+        /// <summary>
+        /// Base64 string of locked icon for achievement if exist.
+        /// </summary>
         public readonly string LockedIcon;
     }
 }

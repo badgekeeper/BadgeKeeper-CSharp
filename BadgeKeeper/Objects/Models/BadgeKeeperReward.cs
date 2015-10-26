@@ -19,7 +19,13 @@ namespace BadgeKeeper.Objects.Models
     /// </summary>
     public class BadgeKeeperReward
     {
+        /// <summary>
+        /// Name of reward.
+        /// </summary>
         public readonly string Name;
+        /// <summary>
+        /// Value of reward.
+        /// </summary>
         public readonly double Value;
     }
 }

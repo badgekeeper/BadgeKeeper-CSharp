@@ -20,6 +20,9 @@ using BadgeKeeper.Network;
 
 namespace BadgeKeeper
 {
+    /// <summary>
+    /// General instance to work with Badge Keeper service.
+    /// </summary>
     public class BadgeKeeper
     {
         // Singleton instance
@@ -41,6 +44,10 @@ namespace BadgeKeeper
             _apiService = new BadgeKeeperApiService();
         }
 
+        /// <summary>
+        /// Get Badge Keeper instance to make request or prepare values.
+        /// </summary>
+        /// <returns>Badge Keeper singleton object</returns>
         public static BadgeKeeper Instance()
         {
             if (_instance == null)
@@ -80,37 +87,48 @@ namespace BadgeKeeper
         }
 
         /// <summary>
-        /// Requests all project achievements list.
-        /// Check that Project Id and callback configured.
+        /// Get all project achievements list.
+        /// Check that Project Id configured.
         /// </summary>
-        /// <returns>Array of BadgeKeeperAchievement.</returns>
+        /// <param name="onSuccess">Callback with success response</param>
+        /// <param name="onError">Callback with failed response</param>
         public static void GetProjectAchievements(Action<BadgeKeeperAchievement[]> onSuccess, Action<BadgeKeeperResponseError> onError)
         {
             Instance().CheckProjectParameters();
             Action<BadgeKeeperProject> onProjectReceived = (BadgeKeeperProject project) =>
             {
-                onSuccess(project.Achievements);
+                if (onSuccess != null)
+                {
+                    onSuccess(project.Achievements);
+                }
             };
             Api().GetProjectAchievements(Instance()._projectId, Instance()._shouldLoadIcons, onProjectReceived, onError);
         }
 
         /// <summary>
-        /// Requests all project achievements list async.
-        /// Check that Project Id and callback configured.
+        /// Get all user achievements list.
+        /// Check that Project Id and User Id configured.
         /// </summary>
-        /// <returns>Array of BadgeKeeperAchievement.</returns>
-        public static void GetProjectAchievementsAsync(Action<BadgeKeeperUserAchievement[]> onSuccess, Action<BadgeKeeperResponseError> onError)
+        /// <param name="onSuccess">Callback with success response</param>
+        /// <param name="onError">Callback with failed response</param>
+        public static void GetUserAchievements(Action<BadgeKeeperUserAchievement[]> onSuccess, Action<BadgeKeeperResponseError> onError)
         {
             Instance().CheckParameters();
             Api().GetUserAchievements(Instance()._projectId, Instance()._userId, Instance()._shouldLoadIcons, onSuccess, onError);
         }
 
+        /// <summary>
+        /// Get Api service instance
+        /// </summary>
+        /// <returns>IBadgeKeeperApi object</returns>
         private static IBadgeKeeperApi Api()
         {
             return Instance()._apiService;
         }
 
-        // Configuration validation
+        /// <summary>
+        /// Validate project and user settings. If failed - throw BadgeKeepeException.
+        /// </summary>
         private void CheckParameters()
         {
             CheckProjectParameters();
@@ -120,6 +138,9 @@ namespace BadgeKeeper
             }
         }
 
+        /// <summary>
+        /// Validate project setting. If failed - throw BadgeKeepeException.
+        /// </summary>
         private void CheckProjectParameters()
         {
             if (_projectId == null || _projectId.Length <= 0)

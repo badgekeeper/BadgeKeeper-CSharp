@@ -20,6 +20,9 @@ namespace BadgeKeeper.Objects.Models
     /// </summary>
     public class BadgeKeeperUnlockedAchievement
     {
+        /// <summary>
+        /// Array of Rewards provided by achievement.
+        /// </summary>
         public readonly BadgeKeeperReward[] Rewards;
     }
 }
