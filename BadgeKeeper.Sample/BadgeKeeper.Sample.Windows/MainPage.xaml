@@ -1,0 +1,18 @@
+﻿<Page
+    x:Class="BadgeKeeper.Sample.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:BadgeKeeper.Sample"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <StackPanel VerticalAlignment="Center">
+        <TextBox PlaceholderText="User Id" Width="250" Margin="10"></TextBox>
+        <Button HorizontalAlignment="Center" Width="250" Margin="10" Click="GetProjectAchievementsClick">Get Project achievements</Button>
+        <Button HorizontalAlignment="Center" Width="250" Margin="10" Click="GetUserAchievementsClick">Get User achievements</Button>
+        <Button HorizontalAlignment="Center" Width="250" Margin="10" Click="PostUserValuesClick">Post User variables</Button>
+        <Button HorizontalAlignment="Center" Width="250" Margin="10" Click="IncrementUserValuesClick">Increment User achievements</Button>
+        <TextBox Width="250" Margin="10" Height="150" TextWrapping="Wrap" AcceptsReturn="True" PlaceholderText="Response"></TextBox>
+    </StackPanel>
+</Page>

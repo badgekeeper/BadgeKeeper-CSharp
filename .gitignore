@@ -3,6 +3,16 @@ BadgeKeeper/bin
 BadgeKeeper/obj
 BadgeKeeper/csx
 BadgeKeeper/rcf
+BadgeKeeper.Sample/BadgeKeeper.Sample.Windows/.vs
+BadgeKeeper.Sample/BadgeKeeper.Sample.Windows/bin
+BadgeKeeper.Sample/BadgeKeeper.Sample.Windows/obj
+BadgeKeeper.Sample/BadgeKeeper.Sample.Windows/csx
+BadgeKeeper.Sample/BadgeKeeper.Sample.Windows/rcf
+BadgeKeeper.Sample/BadgeKeeper.Sample.WindowsPhone/.vs
+BadgeKeeper.Sample/BadgeKeeper.Sample.WindowsPhone/bin
+BadgeKeeper.Sample/BadgeKeeper.Sample.WindowsPhone/obj
+BadgeKeeper.Sample/BadgeKeeper.Sample.WindowsPhone/csx
+BadgeKeeper.Sample/BadgeKeeper.Sample.WindowsPhone/rcf
 packages/
 *.dbmdl
 *.log
