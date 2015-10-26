@@ -58,6 +58,7 @@ namespace BadgeKeeper.Network
 
         private void Get<ResponseType>(string url, Action<ResponseType> onSuccess, Action<BadgeKeeperResponseError> onError)
         {
+#if !(PORTABLE40 || PORTABLE)
             using (var client = new WebClient())
             {
                 client.Headers.Clear();
@@ -86,10 +87,12 @@ namespace BadgeKeeper.Network
                 // make request
                 client.DownloadStringAsync(new Uri(url));
             }
+#endif
         }
 
         private void Post<ResponseType>(string url, string body, Action<ResponseType> onSuccess, Action<BadgeKeeperResponseError> onError)
         {
+#if !(PORTABLE40 || PORTABLE)
             using (var client = new WebClient())
             {
                 client.Headers.Clear();
@@ -118,6 +121,7 @@ namespace BadgeKeeper.Network
                 // make request
                 client.UploadStringAsync(new Uri(url), "POST", body);
             }
+#endif
         }
 
         private static string ShouldLoadIcons(bool shouldLoadIcons)
@@ -148,7 +152,8 @@ namespace BadgeKeeper.Network
                 using (var stream = new System.IO.MemoryStream())
                 {
                     serializer.WriteObject(stream, data);
-                    result = Encoding.UTF8.GetString(stream.ToArray());
+                    var bytes = stream.ToArray();
+                    result = Encoding.UTF8.GetString(bytes, 0, bytes.Length);
                 }
             }
             return result;

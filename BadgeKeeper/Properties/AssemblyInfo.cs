@@ -28,6 +28,7 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
+#if !(PORTABLE40 || PORTABLE)
 // Setting ComVisible to false makes the types in this assembly not visible 
 // to COM components.  If you need to access a type in this assembly from 
 // COM, set the ComVisible attribute to true on that type.
@@ -35,6 +36,7 @@ using System.Runtime.InteropServices;
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
 [assembly: Guid("325ec0f9-5e21-4aec-ab47-c03af096e686")]
+#endif
 
 // Version information for an assembly consists of the following four values:
 //

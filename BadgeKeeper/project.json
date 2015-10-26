@@ -24,6 +24,15 @@
         "System.Xml": ""
       }
     },
-    ".NETPortable,Version=v4.0,Profile=Profile328": {}
+    ".NETPortable,Version=v4.0,Profile=Profile328": {
+	  "compilationOptions": {
+        "define": [ "PORTABLE40" ]
+      },
+      "frameworkAssemblies": {
+        "System": "",
+        "System.Runtime.Serialization": "",
+        "System.Xml": ""
+      }
+    }
   }
 }
