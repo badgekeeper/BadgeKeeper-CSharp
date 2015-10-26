@@ -1,0 +1,79 @@
+﻿**********************
+Windows PowerShell transcript start
+Start time: 20151026215154
+Username: DESKTOP-ORAMR8I\sique
+RunAs User: DESKTOP-ORAMR8I\sique
+Machine: DESKTOP-ORAMR8I (Microsoft Windows NT 10.0.10240.0)
+Host Application: powershell -Command & { [Console]::WindowWidth = 150; [Console]::WindowHeight = 40; Start-Transcript D:\git\BadgeKeeper-CSharp\Build\runbuild.txt; Import-Module D:\git\BadgeKeeper-CSharp\Build\..\Tools\PSake\psake.psm1; Invoke-psake D:\git\BadgeKeeper-CSharp\Build\..\Build\build.ps1 ; Stop-Transcript; }
+Process ID: 9096
+PSVersion: 5.0.10240.16384
+WSManStackVersion: 3.0
+SerializationVersion: 1.1.0.1
+CLRVersion: 4.0.30319.42000
+BuildVersion: 10.0.10240.16384
+PSCompatibleVersions: 1.0, 2.0, 3.0, 4.0, 5.0.10240.16384
+PSRemotingProtocolVersion: 2.3
+**********************
+Transcript started, output file is D:\git\BadgeKeeper-CSharp\Build\runbuild.txt
+psake version 4.4.2
+Copyright (c) 2010-2015 James Kovacs, Damian Hickey & Contributors
+
+Executing Clean
+Setting location to D:\git\BadgeKeeper-CSharp
+Creating working directory D:\git\BadgeKeeper-CSharp\Working
+
+
+    Directory: D:\git\BadgeKeeper-CSharp
+
+
+Mode                LastWriteTime         Length Name
+----                -------------         ------ ----
+d-----       10/26/2015   9:51 PM                Working
+Executing Build
+Copying source to working source directory D:\git\BadgeKeeper-CSharp\Working\Src
+
+-------------------------------------------------------------------------------
+   ROBOCOPY     ::     Robust File Copy for Windows
+-------------------------------------------------------------------------------
+
+  Started : Monday, October 26, 2015 9:51:55 PM
+   Source : D:\git\BadgeKeeper-CSharp\Src\
+     Dest : D:\git\BadgeKeeper-CSharp\Working\Src\
+
+    Files : *.*
+
+Exc Files : *.suo
+	    *.user
+	    *.lock.json
+
+ Exc Dirs : bin
+	    obj
+	    TestResults
+	    AppPackages
+	    .vs
+	    artifacts
+
+  Options : *.* /S /E /DCOPY:DA /COPY:DAT /PURGE /MIR /NP /R:1000000 /W:30
+
+------------------------------------------------------------------------------
+
+2015/10/26 21:51:55 ERROR 2 (0x00000002) Accessing Source Directory D:\git\BadgeKeeper-CSharp\Src\
+The system cannot find the file specified.
+
+Updating assembly version
+
+PS>TerminatingError(Get-Content): "The running command stopped because the preference variable "ErrorActionPreference" or common parameter is set to Stop: Cannot find path 'D:\git\BadgeKeeper-CSharp\Working\Src\Newtonsoft.Json\project.json' because it does not exist."
+>> TerminatingError(Get-Content): "The running command stopped because the preference variable "ErrorActionPreference" or common parameter is set to Stop: Cannot find path 'D:\git\BadgeKeeper-CSharp\Working\Src\Newtonsoft.Json\project.json' because it does not exist."
+>> TerminatingError(Get-Content): "The running command stopped because the preference variable "ErrorActionPreference" or common parameter is set to Stop: Cannot find path 'D:\git\BadgeKeeper-CSharp\Working\Src\Newtonsoft.Json\project.json' because it does not exist."
+>> TerminatingError(Get-Content): "Cannot find path 'D:\git\BadgeKeeper-CSharp\Working\Src\Newtonsoft.Json\project.json' because it does not exist."
+>> TerminatingError(Get-Content): "Cannot find path 'D:\git\BadgeKeeper-CSharp\Working\Src\Newtonsoft.Json\project.json' because it does not exist."
+>> TerminatingError(Get-Content): "Cannot find path 'D:\git\BadgeKeeper-CSharp\Working\Src\Newtonsoft.Json\project.json' because it does not exist."
+>> TerminatingError(Get-Content): "Cannot find path 'D:\git\BadgeKeeper-CSharp\Working\Src\Newtonsoft.Json\project.json' because it does not exist."
+>> TerminatingError(Get-Content): "Cannot find path 'D:\git\BadgeKeeper-CSharp\Working\Src\Newtonsoft.Json\project.json' because it does not exist."
+Error: 10/26/2015 9:51:55 PM:
+At D:\git\BadgeKeeper-CSharp\Build\build.ps1:347 char:12 +   $json = (Get-Content $projectPath) -join "`n" | ConvertFrom-Json +            ~~~~~~~~~~
+~~~~~~~~~~~~~~ [<<==>>] Exception: Cannot find path 'D:\git\BadgeKeeper-CSharp\Working\Src\Newtonsoft.Json\project.json' because it does not exist.
+**********************
+Windows PowerShell transcript end
+End time: 20151026215155
+**********************

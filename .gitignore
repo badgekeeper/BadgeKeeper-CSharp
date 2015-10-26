@@ -26,4 +26,3 @@ packages/
 *.opensdf
 *.exp
 *.nupkg
-nuget.exe
