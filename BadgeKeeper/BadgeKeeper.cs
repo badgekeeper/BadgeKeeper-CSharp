@@ -14,11 +14,9 @@
 
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using BadgeKeeper.Objects;
 using BadgeKeeper.Objects.Models;
+using BadgeKeeper.Network;
 
 namespace BadgeKeeper
 {
@@ -30,13 +28,18 @@ namespace BadgeKeeper
         // Service properties
         private string _projectId;
         private string _userId;
-        private bool _shouldLoadIcons;
+        private bool _shouldLoadIcons = false;
+
+        private IBadgeKeeperApi _apiService;
 
         // Temporary storage
         private Dictionary<string, List<BadgeKeeperPair<string, double>>> postVariables = new Dictionary<string, List<BadgeKeeperPair<string, double>>>();
         private Dictionary<string, List<BadgeKeeperPair<string, double>>> incrementVariables = new Dictionary<string, List<BadgeKeeperPair<string, double>>>();
 
-        private BadgeKeeper() { }
+        private BadgeKeeper()
+        {
+            _apiService = new BadgeKeeperApiService();
+        }
 
         public static BadgeKeeper Instance()
         {
@@ -81,9 +84,14 @@ namespace BadgeKeeper
         /// Check that Project Id and callback configured.
         /// </summary>
         /// <returns>Array of BadgeKeeperAchievement.</returns>
-        public static BadgeKeeperAchievement[] GetProjectAchievements()
+        public static void GetProjectAchievements(Action<BadgeKeeperAchievement[]> onSuccess, Action<BadgeKeeperResponseError> onError)
         {
-            return null;
+            Instance().CheckProjectParameters();
+            Action<BadgeKeeperProject> onProjectReceived = (BadgeKeeperProject project) =>
+            {
+                onSuccess(project.Achievements);
+            };
+            Api().GetProjectAchievements(Instance()._projectId, Instance()._shouldLoadIcons, onProjectReceived, onError);
         }
 
         /// <summary>
@@ -91,9 +99,33 @@ namespace BadgeKeeper
         /// Check that Project Id and callback configured.
         /// </summary>
         /// <returns>Array of BadgeKeeperAchievement.</returns>
-        public static async Task<BadgeKeeperAchievement[]> GetProjectAchievementsAsync()
+        public static void GetProjectAchievementsAsync(Action<BadgeKeeperUserAchievement[]> onSuccess, Action<BadgeKeeperResponseError> onError)
         {
-            return null;
+            Instance().CheckParameters();
+            Api().GetUserAchievements(Instance()._projectId, Instance()._userId, Instance()._shouldLoadIcons, onSuccess, onError);
+        }
+
+        private static IBadgeKeeperApi Api()
+        {
+            return Instance()._apiService;
+        }
+
+        // Configuration validation
+        private void CheckParameters()
+        {
+            CheckProjectParameters();
+            if (_userId == null || _userId.Length <= 0)
+            {
+                throw new Exceptions.BadgeKeeperException("User Id property is not configured.");
+            }
+        }
+
+        private void CheckProjectParameters()
+        {
+            if (_projectId == null || _projectId.Length <= 0)
+            {
+                throw new Exceptions.BadgeKeeperException("Project Id property is not configured.");
+            }
         }
     }
 }

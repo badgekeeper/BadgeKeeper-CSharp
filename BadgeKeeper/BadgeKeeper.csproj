@@ -41,6 +41,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BadgeKeeper.cs" />
+    <Compile Include="Exceptions\BadgeKeeperException.cs" />
     <Compile Include="Network\BadgeKeeperApiService.cs" />
     <Compile Include="Network\BadgeKeeperResponse.cs" />
     <Compile Include="Network\BadgeKeeperResponseError.cs" />
