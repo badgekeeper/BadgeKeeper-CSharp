@@ -2,13 +2,12 @@
   $zipFileName = "BadgeKeeper01alpha.zip"
   $majorVersion = "0.1"
   $majorWithReleaseVersion = "0.1.1"
-  $nugetPrelease = "alpha"
+  $nugetPrelease = "release"
   $version = GetVersion $majorWithReleaseVersion
   $packageId = "BadgeKeeper"
   $buildNuGet = $true
   $treatWarningsAsErrors = $false
   $workingName = if ($workingName) {$workingName} else {"Working"}
-  $dnvmVersion = "1.0.0-beta8"
   
   $baseDir  = resolve-path ..
   $buildDir = "$baseDir\Build"
@@ -124,16 +123,10 @@ task Package -depends Build {
     exec { .\Build\NuGet.exe pack $nuspecPath -Symbols }
     move -Path .\*.nupkg -Destination $workingDir\NuGet
   }
-  
-  robocopy $workingSourceDir $workingDir\Package\Source\Src /MIR /NFL /NDL /NJS /NC /NS /NP /XD bin obj TestResults AppPackages .vs artifacts /XF *.suo *.user *.lock.json | Out-Default
-  robocopy $buildDir $workingDir\Package\Source\Build /MIR /NFL /NDL /NJS /NC /NS /NP /XF runbuild.txt | Out-Default
-  
-  exec { .\Build\7za.exe a -tzip $workingDir\$zipFileName $workingDir\Package\* | Out-Default } "Error zipping"
 }
 
 # Unzip package to a location
 task Deploy -depends Package {
-  exec { .\Build\7za.exe x -y "-o$workingDir\Deployed" $workingDir\$zipFileName | Out-Default } "Error unzipping"
 }
 
 function MSBuildBuild($build)

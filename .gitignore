@@ -13,6 +13,7 @@ Sources/BadgeKeeper.Sample/BadgeKeeper.Sample.WindowsPhone/bin
 Sources/BadgeKeeper.Sample/BadgeKeeper.Sample.WindowsPhone/obj
 Sources/BadgeKeeper.Sample/BadgeKeeper.Sample.WindowsPhone/csx
 Sources/BadgeKeeper.Sample/BadgeKeeper.Sample.WindowsPhone/rcf
+Build/runbuild.txt
 Working/
 packages/
 *.dbmdl
