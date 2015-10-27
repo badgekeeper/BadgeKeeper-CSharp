@@ -1,11 +1,11 @@
 ﻿**********************
 Windows PowerShell transcript start
-Start time: 20151027115030
+Start time: 20151027120620
 Username: DESKTOP-ORAMR8I\sique
 RunAs User: DESKTOP-ORAMR8I\sique
 Machine: DESKTOP-ORAMR8I (Microsoft Windows NT 10.0.10240.0)
 Host Application: powershell -Command & { [Console]::WindowWidth = 150; [Console]::WindowHeight = 40; Start-Transcript D:\git\BadgeKeeper-CSharp\Build\runbuild.txt; Import-Module D:\git\BadgeKeeper-CSharp\Build\psake.psm1; Invoke-psake D:\git\BadgeKeeper-CSharp\Build\build.ps1 ; Stop-Transcript; }
-Process ID: 8004
+Process ID: 2908
 PSVersion: 5.0.10240.16384
 WSManStackVersion: 3.0
 SerializationVersion: 1.1.0.1
@@ -29,7 +29,7 @@ Creating working directory D:\git\BadgeKeeper-CSharp\Working
 
 Mode                LastWriteTime         Length Name
 ----                -------------         ------ ----
-d-----       10/27/2015  11:50 AM                Working
+d-----       10/27/2015  12:06 PM                Working
 Executing Build
 Copying source to working source directory D:\git\BadgeKeeper-CSharp\Working\Sources
 
@@ -37,7 +37,7 @@ Copying source to working source directory D:\git\BadgeKeeper-CSharp\Working\Sou
    ROBOCOPY     ::     Robust File Copy for Windows
 -------------------------------------------------------------------------------
 
-  Started : Tuesday, October 27, 2015 11:50:31 AM
+  Started : Tuesday, October 27, 2015 12:06:22 PM
    Source : D:\git\BadgeKeeper-CSharp\Sources\
      Dest : D:\git\BadgeKeeper-CSharp\Working\Sources\
 
@@ -90,7 +90,7 @@ Exc Files : *.suo
 	    New File  		    1057	BadgeKeeperUnlockedAchievement.cs
 	    New File  		    1060	BadgeKeeperUserAchievement.cs
 	  New Dir          1	D:\git\BadgeKeeper-CSharp\Sources\BadgeKeeper\Properties\
-	    New File  		    2191	AssemblyInfo.cs
+	    New File  		    2170	AssemblyInfo.cs
 	  New Dir          0	D:\git\BadgeKeeper-CSharp\Sources\BadgeKeeper.Sample\
 	  New Dir          4	D:\git\BadgeKeeper-CSharp\Sources\BadgeKeeper.Sample\BadgeKeeper.Sample.Shared\
 	    New File  		     249	App.xaml
@@ -134,9 +134,9 @@ Exc Files : *.suo
    Times :   0:00:00   0:00:00                       0:00:00   0:00:00
 
 
-   Speed :              169937 Bytes/sec.
-   Speed :               9.723 MegaBytes/min.
-   Ended : Tuesday, October 27, 2015 11:50:32 AM
+   Speed :              166649 Bytes/sec.
+   Speed :               9.535 MegaBytes/min.
+   Ended : Tuesday, October 27, 2015 12:06:23 PM
 
 Updating assembly version
 
@@ -148,14 +148,12 @@ D:\git\BadgeKeeper-CSharp\Working\Sources\BadgeKeeper.Sample\BadgeKeeper.Sample.
 D:\git\BadgeKeeper-CSharp\Working\Sources\BadgeKeeper.Sample\BadgeKeeper.Sample.WindowsPhone\Properties\AssemblyInfo.cs -> 0.1.1.19027
 Building  BadgeKeeper
 
-Restoring D:\git\BadgeKeeper-CSharp\Working\Sources\BadgeKeeper.sln
-
 Building D:\git\BadgeKeeper-CSharp\Working\Sources\BadgeKeeper.sln
 Microsoft (R) Build Engine version 14.0.23107.0
 Copyright (C) Microsoft Corporation. All rights reserved.
 
 Building the projects in this solution one at a time. To enable parallel build, please add the "/m" switch.
-Build started 10/27/2015 11:50:33 AM.
+Build started 10/27/2015 12:06:24 PM.
 Project "D:\git\BadgeKeeper-CSharp\Working\Sources\BadgeKeeper.sln" on node 1 (Clean;Rebuild target(s)).
 ValidateSolutionConfiguration:
   Building solution configuration "Release|Any CPU".
@@ -815,17 +813,15 @@ Build succeeded.
     0 Warning(s)
     0 Error(s)
 
-Time Elapsed 00:00:08.38
+Time Elapsed 00:00:04.91
 Building  BadgeKeeper.Portable
-
-Restoring D:\git\BadgeKeeper-CSharp\Working\Sources\BadgeKeeper.Portable.sln
 
 Building D:\git\BadgeKeeper-CSharp\Working\Sources\BadgeKeeper.Portable.sln
 Microsoft (R) Build Engine version 14.0.23107.0
 Copyright (C) Microsoft Corporation. All rights reserved.
 
 Building the projects in this solution one at a time. To enable parallel build, please add the "/m" switch.
-Build started 10/27/2015 11:50:41 AM.
+Build started 10/27/2015 12:06:29 PM.
 Project "D:\git\BadgeKeeper-CSharp\Working\Sources\BadgeKeeper.Portable.sln" on node 1 (Clean;Rebuild target(s)).
 ValidateSolutionConfiguration:
   Building solution configuration "Release|Any CPU".
@@ -856,17 +852,15 @@ Build succeeded.
     0 Warning(s)
     0 Error(s)
 
-Time Elapsed 00:00:00.39
+Time Elapsed 00:00:00.35
 Building  BadgeKeeper.Portable40
-
-Restoring D:\git\BadgeKeeper-CSharp\Working\Sources\BadgeKeeper.Portable40.sln
 
 Building D:\git\BadgeKeeper-CSharp\Working\Sources\BadgeKeeper.Portable40.sln
 Microsoft (R) Build Engine version 14.0.23107.0
 Copyright (C) Microsoft Corporation. All rights reserved.
 
 Building the projects in this solution one at a time. To enable parallel build, please add the "/m" switch.
-Build started 10/27/2015 11:50:42 AM.
+Build started 10/27/2015 12:06:29 PM.
 Project "D:\git\BadgeKeeper-CSharp\Working\Sources\BadgeKeeper.Portable40.sln" on node 1 (Clean;Rebuild target(s)).
 ValidateSolutionConfiguration:
   Building solution configuration "Release|Any CPU".
@@ -897,17 +891,15 @@ Build succeeded.
     0 Warning(s)
     0 Error(s)
 
-Time Elapsed 00:00:00.35
+Time Elapsed 00:00:00.31
 Building  BadgeKeeper.Net40
-
-Restoring D:\git\BadgeKeeper-CSharp\Working\Sources\BadgeKeeper.Net40.sln
 
 Building D:\git\BadgeKeeper-CSharp\Working\Sources\BadgeKeeper.Net40.sln
 Microsoft (R) Build Engine version 14.0.23107.0
 Copyright (C) Microsoft Corporation. All rights reserved.
 
 Building the projects in this solution one at a time. To enable parallel build, please add the "/m" switch.
-Build started 10/27/2015 11:50:42 AM.
+Build started 10/27/2015 12:06:30 PM.
 Project "D:\git\BadgeKeeper-CSharp\Working\Sources\BadgeKeeper.Net40.sln" on node 1 (Clean;Rebuild target(s)).
 ValidateSolutionConfiguration:
   Building solution configuration "Release|Any CPU".
@@ -942,17 +934,15 @@ Build succeeded.
     0 Warning(s)
     0 Error(s)
 
-Time Elapsed 00:00:00.39
+Time Elapsed 00:00:00.41
 Building  BadgeKeeper.Net35
-
-Restoring D:\git\BadgeKeeper-CSharp\Working\Sources\BadgeKeeper.Net35.sln
 
 Building D:\git\BadgeKeeper-CSharp\Working\Sources\BadgeKeeper.Net35.sln
 Microsoft (R) Build Engine version 14.0.23107.0
 Copyright (C) Microsoft Corporation. All rights reserved.
 
 Building the projects in this solution one at a time. To enable parallel build, please add the "/m" switch.
-Build started 10/27/2015 11:50:43 AM.
+Build started 10/27/2015 12:06:30 PM.
 Project "D:\git\BadgeKeeper-CSharp\Working\Sources\BadgeKeeper.Net35.sln" on node 1 (Clean;Rebuild target(s)).
 ValidateSolutionConfiguration:
   Building solution configuration "Release|Any CPU".
@@ -984,14 +974,14 @@ Build succeeded.
     0 Warning(s)
     0 Error(s)
 
-Time Elapsed 00:00:00.41
+Time Elapsed 00:00:00.37
 Executing Package
 
 -------------------------------------------------------------------------------
    ROBOCOPY     ::     Robust File Copy for Windows
 -------------------------------------------------------------------------------
 
-  Started : Tuesday, October 27, 2015 11:50:43 AM
+  Started : Tuesday, October 27, 2015 12:06:31 PM
    Source : D:\git\BadgeKeeper-CSharp\Working\Sources\BadgeKeeper\bin\Release\Net45\
      Dest : D:\git\BadgeKeeper-CSharp\Working\Package\Bin\Net45\
 
@@ -1010,7 +1000,7 @@ Exc Files : *.CodeAnalysisLog.xml
    ROBOCOPY     ::     Robust File Copy for Windows
 -------------------------------------------------------------------------------
 
-  Started : Tuesday, October 27, 2015 11:50:43 AM
+  Started : Tuesday, October 27, 2015 12:06:31 PM
    Source : D:\git\BadgeKeeper-CSharp\Working\Sources\BadgeKeeper\bin\Release\Portable\
      Dest : D:\git\BadgeKeeper-CSharp\Working\Package\Bin\Portable\
 
@@ -1029,7 +1019,7 @@ Exc Files : *.CodeAnalysisLog.xml
    ROBOCOPY     ::     Robust File Copy for Windows
 -------------------------------------------------------------------------------
 
-  Started : Tuesday, October 27, 2015 11:50:43 AM
+  Started : Tuesday, October 27, 2015 12:06:31 PM
    Source : D:\git\BadgeKeeper-CSharp\Working\Sources\BadgeKeeper\bin\Release\Portable40\
      Dest : D:\git\BadgeKeeper-CSharp\Working\Package\Bin\Portable40\
 
@@ -1048,7 +1038,7 @@ Exc Files : *.CodeAnalysisLog.xml
    ROBOCOPY     ::     Robust File Copy for Windows
 -------------------------------------------------------------------------------
 
-  Started : Tuesday, October 27, 2015 11:50:43 AM
+  Started : Tuesday, October 27, 2015 12:06:31 PM
    Source : D:\git\BadgeKeeper-CSharp\Working\Sources\BadgeKeeper\bin\Release\Net40\
      Dest : D:\git\BadgeKeeper-CSharp\Working\Package\Bin\Net40\
 
@@ -1067,7 +1057,7 @@ Exc Files : *.CodeAnalysisLog.xml
    ROBOCOPY     ::     Robust File Copy for Windows
 -------------------------------------------------------------------------------
 
-  Started : Tuesday, October 27, 2015 11:50:44 AM
+  Started : Tuesday, October 27, 2015 12:06:31 PM
    Source : D:\git\BadgeKeeper-CSharp\Working\Sources\BadgeKeeper\bin\Release\Net35\
      Dest : D:\git\BadgeKeeper-CSharp\Working\Package\Bin\Net35\
 
@@ -1088,17 +1078,371 @@ Exc Files : *.CodeAnalysisLog.xml
 
 Mode                LastWriteTime         Length Name
 ----                -------------         ------ ----
-d-----       10/27/2015  11:50 AM                NuGet
-PS>TerminatingError(Copy-Item): "The running command stopped because the preference variable "ErrorActionPreference" or common parameter is set to Stop: Cannot find path 'D:\git\BadgeKeeper-CSharp\Build\BadgeKeeper.nuspec' because it does not exist."
->> TerminatingError(Copy-Item): "The running command stopped because the preference variable "ErrorActionPreference" or common parameter is set to Stop: Cannot find path 'D:\git\BadgeKeeper-CSharp\Build\BadgeKeeper.nuspec' because it does not exist."
->> TerminatingError(Copy-Item): "Cannot find path 'D:\git\BadgeKeeper-CSharp\Build\BadgeKeeper.nuspec' because it does not exist."
->> TerminatingError(Copy-Item): "Cannot find path 'D:\git\BadgeKeeper-CSharp\Build\BadgeKeeper.nuspec' because it does not exist."
->> TerminatingError(Copy-Item): "Cannot find path 'D:\git\BadgeKeeper-CSharp\Build\BadgeKeeper.nuspec' because it does not exist."
-Error: 10/27/2015 11:50:44 AM:
-At D:\git\BadgeKeeper-CSharp\Build\build.ps1:94 char:5 +     Copy-Item -Path "$buildDir\BadgeKeeper.nuspec" -Destination $nusp ... +     ~~~~~~~~~~~~
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ [<<==>>] Exception: Cannot find path 'D:\git\BadgeKeeper-CSharp\Build\BadgeKeeper.nuspec' becau
-se it does not exist.
+d-----       10/27/2015  12:06 PM                NuGet
+Updating nuspec file at D:\git\BadgeKeeper-CSharp\Working\NuGet\BadgeKeeper.nuspec
+
+Found 1 nodes with path '//*[local-name() = 'id']'
+Found 1 nodes with path '//*[local-name() = 'version']'
+<?xml version="1.0" encoding="utf-8"?><package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd"><metadata><id>BadgeKeeper</id><version>0.1.1-alpha</version><title>BadgeKeeper</title><authors>Alexander Pukhov</authors><owners>Badge Keeper</owners><description>Badge Keeper .NET client library. Easily add achievements to your app.</description><language>en-US</language><projectUrl>https://badgekeeper.net</projectUrl><iconUrl>https://badgekeeper.blob.core.windows.net/icons/badgekeeper.png</iconUrl><requireLicenseAcceptance>false</requireLicenseAcceptance><licenseUrl>https://github.com/badgekeeper/BadgeKeeper-CSharp/blob/master/LICENSE</licenseUrl><copyright>Copyright Badge Keeper 2015</copyright><tags>achievements badges highscore leaderboard reward api cloud service</tags></metadata></package>
+
+-------------------------------------------------------------------------------
+   ROBOCOPY     ::     Robust File Copy for Windows
+-------------------------------------------------------------------------------
+
+  Started : Tuesday, October 27, 2015 12:06:31 PM
+   Source : D:\git\BadgeKeeper-CSharp\Working\Sources\BadgeKeeper\bin\Release\Net45\
+     Dest : D:\git\BadgeKeeper-CSharp\Working\NuGet\lib\net45\
+
+    Files : *.dll
+	    *.pdb
+	    *.xml
+
+Exc Files : *.CodeAnalysisLog.xml
+
+  Options : /NS /NC /NDL /NFL /NJS /DCOPY:DA /COPY:DAT /NP /XO /R:1000000 /W:30
+
+------------------------------------------------------------------------------
+
+
+-------------------------------------------------------------------------------
+   ROBOCOPY     ::     Robust File Copy for Windows
+-------------------------------------------------------------------------------
+
+  Started : Tuesday, October 27, 2015 12:06:31 PM
+   Source : D:\git\BadgeKeeper-CSharp\Working\Sources\BadgeKeeper\bin\Release\Portable\
+     Dest : D:\git\BadgeKeeper-CSharp\Working\NuGet\lib\portable-net45+wp80+win8+wpa81+dnxcore50\
+
+    Files : *.dll
+	    *.pdb
+	    *.xml
+
+Exc Files : *.CodeAnalysisLog.xml
+
+  Options : /NS /NC /NDL /NFL /NJS /DCOPY:DA /COPY:DAT /NP /XO /R:1000000 /W:30
+
+------------------------------------------------------------------------------
+
+
+-------------------------------------------------------------------------------
+   ROBOCOPY     ::     Robust File Copy for Windows
+-------------------------------------------------------------------------------
+
+  Started : Tuesday, October 27, 2015 12:06:32 PM
+   Source : D:\git\BadgeKeeper-CSharp\Working\Sources\BadgeKeeper\bin\Release\Portable40\
+     Dest : D:\git\BadgeKeeper-CSharp\Working\NuGet\lib\portable-net40+sl5+wp80+win8+wpa81\
+
+    Files : *.dll
+	    *.pdb
+	    *.xml
+
+Exc Files : *.CodeAnalysisLog.xml
+
+  Options : /NS /NC /NDL /NFL /NJS /DCOPY:DA /COPY:DAT /NP /XO /R:1000000 /W:30
+
+------------------------------------------------------------------------------
+
+
+-------------------------------------------------------------------------------
+   ROBOCOPY     ::     Robust File Copy for Windows
+-------------------------------------------------------------------------------
+
+  Started : Tuesday, October 27, 2015 12:06:32 PM
+   Source : D:\git\BadgeKeeper-CSharp\Working\Sources\BadgeKeeper\bin\Release\Net40\
+     Dest : D:\git\BadgeKeeper-CSharp\Working\NuGet\lib\net40\
+
+    Files : *.dll
+	    *.pdb
+	    *.xml
+
+Exc Files : *.CodeAnalysisLog.xml
+
+  Options : /NS /NC /NDL /NFL /NJS /DCOPY:DA /COPY:DAT /NP /XO /R:1000000 /W:30
+
+------------------------------------------------------------------------------
+
+
+-------------------------------------------------------------------------------
+   ROBOCOPY     ::     Robust File Copy for Windows
+-------------------------------------------------------------------------------
+
+  Started : Tuesday, October 27, 2015 12:06:32 PM
+   Source : D:\git\BadgeKeeper-CSharp\Working\Sources\BadgeKeeper\bin\Release\Net35\
+     Dest : D:\git\BadgeKeeper-CSharp\Working\NuGet\lib\net35\
+
+    Files : *.dll
+	    *.pdb
+	    *.xml
+
+Exc Files : *.CodeAnalysisLog.xml
+
+  Options : /NS /NC /NDL /NFL /NJS /DCOPY:DA /COPY:DAT /NP /XO /R:1000000 /W:30
+
+------------------------------------------------------------------------------
+
+
+-------------------------------------------------------------------------------
+   ROBOCOPY     ::     Robust File Copy for Windows
+-------------------------------------------------------------------------------
+
+  Started : Tuesday, October 27, 2015 12:06:32 PM
+   Source : D:\git\BadgeKeeper-CSharp\Working\Sources\
+     Dest : D:\git\BadgeKeeper-CSharp\Working\NuGet\src\
+
+    Files : *.cs
+
+ Exc Dirs : obj
+	    .vs
+	    artifacts
+
+  Options : /NS /NC /NDL /NFL /NJS /S /DCOPY:DA /COPY:DAT /NP /R:1000000 /W:30
+
+------------------------------------------------------------------------------
+
+Building NuGet package with ID BadgeKeeper and version 0.1.1-alpha
+
+
+
+-------------------------------------------------------------------------------
+   ROBOCOPY     ::     Robust File Copy for Windows
+-------------------------------------------------------------------------------
+
+  Started : Tuesday, October 27, 2015 12:06:34 PM
+   Source : D:\git\BadgeKeeper-CSharp\Working\Sources\
+     Dest : D:\git\BadgeKeeper-CSharp\Working\Package\Source\Src\
+
+    Files : *.*
+
+Exc Files : *.suo
+	    *.user
+	    *.lock.json
+
+ Exc Dirs : bin
+	    obj
+	    TestResults
+	    AppPackages
+	    .vs
+	    artifacts
+
+  Options : *.* /NS /NC /NDL /NFL /NJS /S /E /DCOPY:DA /COPY:DAT /PURGE /MIR /NP /R:1000000 /W:30
+
+------------------------------------------------------------------------------
+
+
+-------------------------------------------------------------------------------
+   ROBOCOPY     ::     Robust File Copy for Windows
+-------------------------------------------------------------------------------
+
+  Started : Tuesday, October 27, 2015 12:06:35 PM
+   Source : D:\git\BadgeKeeper-CSharp\Build\
+     Dest : D:\git\BadgeKeeper-CSharp\Working\Package\Source\Build\
+
+    Files : *.*
+
+Exc Files : runbuild.txt
+
+  Options : *.* /NS /NC /NDL /NFL /NJS /S /E /DCOPY:DA /COPY:DAT /PURGE /MIR /NP /R:1000000 /W:30
+
+------------------------------------------------------------------------------
+
+
+7-Zip (A) 4.65  Copyright (c) 1999-2009 Igor Pavlov  2009-02-03
+Scanning
+
+Creating archive D:\git\BadgeKeeper-CSharp\Working\BadgeKeeper01alpha.zip
+
+Compressing  Bin\Net35\BadgeKeeper.dll
+Compressing  Bin\Net35\BadgeKeeper.pdb
+Compressing  Bin\Net35\BadgeKeeper.XML
+Compressing  Bin\Net40\BadgeKeeper.dll
+Compressing  Bin\Net40\BadgeKeeper.pdb
+Compressing  Bin\Net40\BadgeKeeper.XML
+Compressing  Bin\Net45\BadgeKeeper.dll
+Compressing  Bin\Net45\BadgeKeeper.pdb
+Compressing  Bin\Net45\BadgeKeeper.XML
+Compressing  Bin\Portable40\BadgeKeeper.dll
+Compressing  Bin\Portable40\BadgeKeeper.pdb
+Compressing  Bin\Portable\BadgeKeeper.dll
+Compressing  Bin\Portable\BadgeKeeper.pdb
+Compressing  Source\Build\7za.exe
+Compressing  Source\Build\BadgeKeeper.nuspec
+Compressing  Source\Build\build.bat
+Compressing  Source\Build\build.ps1
+Compressing  Source\Build\nuget.exe
+Compressing  Source\Build\psake.psm1
+Compressing  Source\Build\runbuild.cmd
+Compressing  Source\Src\BadgeKeeper.Net35.sln
+Compressing  Source\Src\BadgeKeeper.Net40.sln
+Compressing  Source\Src\BadgeKeeper.Portable.sln
+Compressing  Source\Src\BadgeKeeper.Portable40.sln
+Compressing  Source\Src\BadgeKeeper.Sample\BadgeKeeper.Sample.Shared\App.xaml
+Compressing  Source\Src\BadgeKeeper.Sample\BadgeKeeper.Sample.Shared\App.xaml.cs
+Compressing  Source\Src\BadgeKeeper.Sample\BadgeKeeper.Sample.Shared\BadgeKeeper.Sample.Shared.projitems
+Compressing  Source\Src\BadgeKeeper.Sample\BadgeKeeper.Sample.Shared\BadgeKeeper.Sample.Shared.shproj
+Compressing  Source\Src\BadgeKeeper.Sample\BadgeKeeper.Sample.WindowsPhone\Assets\Logo.scale-240.png
+Compressing  Source\Src\BadgeKeeper.Sample\BadgeKeeper.Sample.WindowsPhone\Assets\SmallLogo.scale-240.png
+Compressing  Source\Src\BadgeKeeper.Sample\BadgeKeeper.Sample.WindowsPhone\Assets\SplashScreen.scale-240.png
+Compressing  Source\Src\BadgeKeeper.Sample\BadgeKeeper.Sample.WindowsPhone\Assets\Square71x71Logo.scale-240.png
+Compressing  Source\Src\BadgeKeeper.Sample\BadgeKeeper.Sample.WindowsPhone\Assets\StoreLogo.scale-240.png
+Compressing  Source\Src\BadgeKeeper.Sample\BadgeKeeper.Sample.WindowsPhone\Assets\WideLogo.scale-240.png
+Compressing  Source\Src\BadgeKeeper.Sample\BadgeKeeper.Sample.WindowsPhone\BadgeKeeper.Sample.WindowsPhone.csproj
+Compressing  Source\Src\BadgeKeeper.Sample\BadgeKeeper.Sample.WindowsPhone\MainPage.xaml
+Compressing  Source\Src\BadgeKeeper.Sample\BadgeKeeper.Sample.WindowsPhone\MainPage.xaml.cs
+Compressing  Source\Src\BadgeKeeper.Sample\BadgeKeeper.Sample.WindowsPhone\Package.appxmanifest
+Compressing  Source\Src\BadgeKeeper.Sample\BadgeKeeper.Sample.WindowsPhone\Properties\AssemblyInfo.cs
+Compressing  Source\Src\BadgeKeeper.Sample\BadgeKeeper.Sample.Windows\Assets\Logo.scale-100.png
+Compressing  Source\Src\BadgeKeeper.Sample\BadgeKeeper.Sample.Windows\Assets\SmallLogo.scale-100.png
+Compressing  Source\Src\BadgeKeeper.Sample\BadgeKeeper.Sample.Windows\Assets\SplashScreen.scale-100.png
+Compressing  Source\Src\BadgeKeeper.Sample\BadgeKeeper.Sample.Windows\Assets\StoreLogo.scale-100.png
+Compressing  Source\Src\BadgeKeeper.Sample\BadgeKeeper.Sample.Windows\BadgeKeeper.Sample.Windows.csproj
+Compressing  Source\Src\BadgeKeeper.Sample\BadgeKeeper.Sample.Windows\BadgeKeeper.Sample.Windows_TemporaryKey.pfx
+Compressing  Source\Src\BadgeKeeper.Sample\BadgeKeeper.Sample.Windows\MainPage.xaml
+Compressing  Source\Src\BadgeKeeper.Sample\BadgeKeeper.Sample.Windows\MainPage.xaml.cs
+Compressing  Source\Src\BadgeKeeper.Sample\BadgeKeeper.Sample.Windows\Package.appxmanifest
+Compressing  Source\Src\BadgeKeeper.Sample\BadgeKeeper.Sample.Windows\Properties\AssemblyInfo.cs
+Compressing  Source\Src\BadgeKeeper.sln
+Compressing  Source\Src\BadgeKeeper\BadgeKeeper.cs
+Compressing  Source\Src\BadgeKeeper\BadgeKeeper.csproj
+Compressing  Source\Src\BadgeKeeper\BadgeKeeper.Net35.csproj
+Compressing  Source\Src\BadgeKeeper\BadgeKeeper.Net40.csproj
+Compressing  Source\Src\BadgeKeeper\BadgeKeeper.nuspec
+Compressing  Source\Src\BadgeKeeper\BadgeKeeper.Portable.csproj
+Compressing  Source\Src\BadgeKeeper\BadgeKeeper.Portable40.csproj
+Compressing  Source\Src\BadgeKeeper\Exceptions\BadgeKeeperException.cs
+Compressing  Source\Src\BadgeKeeper\Network\BadgeKeeperApiService.cs
+Compressing  Source\Src\BadgeKeeper\Network\BadgeKeeperResponse.cs
+Compressing  Source\Src\BadgeKeeper\Network\BadgeKeeperResponseError.cs
+Compressing  Source\Src\BadgeKeeper\Network\IBadgeKeeperApi.cs
+Compressing  Source\Src\BadgeKeeper\Objects\BadgeKeeperPair.cs
+Compressing  Source\Src\BadgeKeeper\Objects\Models\BadgeKeeperAchievement.cs
+Compressing  Source\Src\BadgeKeeper\Objects\Models\BadgeKeeperProject.cs
+Compressing  Source\Src\BadgeKeeper\Objects\Models\BadgeKeeperReward.cs
+Compressing  Source\Src\BadgeKeeper\Objects\Models\BadgeKeeperUnlockedAchievement.cs
+Compressing  Source\Src\BadgeKeeper\Objects\Models\BadgeKeeperUserAchievement.cs
+Compressing  Source\Src\BadgeKeeper\project.json
+Compressing  Source\Src\BadgeKeeper\Properties\AssemblyInfo.cs
+
+Everything is Ok
+Executing Deploy
+
+7-Zip (A) 4.65  Copyright (c) 1999-2009 Igor Pavlov  2009-02-03
+
+Processing archive: D:\git\BadgeKeeper-CSharp\Working\BadgeKeeper01alpha.zip
+
+Extracting  Bin
+Extracting  Bin\Net35
+Extracting  Bin\Net35\BadgeKeeper.dll
+Extracting  Bin\Net35\BadgeKeeper.pdb
+Extracting  Bin\Net35\BadgeKeeper.XML
+Extracting  Bin\Net40
+Extracting  Bin\Net40\BadgeKeeper.dll
+Extracting  Bin\Net40\BadgeKeeper.pdb
+Extracting  Bin\Net40\BadgeKeeper.XML
+Extracting  Bin\Net45
+Extracting  Bin\Net45\BadgeKeeper.dll
+Extracting  Bin\Net45\BadgeKeeper.pdb
+Extracting  Bin\Net45\BadgeKeeper.XML
+Extracting  Bin\Portable
+Extracting  Bin\Portable40
+Extracting  Bin\Portable40\BadgeKeeper.dll
+Extracting  Bin\Portable40\BadgeKeeper.pdb
+Extracting  Bin\Portable\BadgeKeeper.dll
+Extracting  Bin\Portable\BadgeKeeper.pdb
+Extracting  Source
+Extracting  Source\Build
+Extracting  Source\Build\7za.exe
+Extracting  Source\Build\BadgeKeeper.nuspec
+Extracting  Source\Build\build.bat
+Extracting  Source\Build\build.ps1
+Extracting  Source\Build\nuget.exe
+Extracting  Source\Build\psake.psm1
+Extracting  Source\Build\runbuild.cmd
+Extracting  Source\Src
+Extracting  Source\Src\BadgeKeeper
+Extracting  Source\Src\BadgeKeeper.Net35.sln
+Extracting  Source\Src\BadgeKeeper.Net40.sln
+Extracting  Source\Src\BadgeKeeper.Portable.sln
+Extracting  Source\Src\BadgeKeeper.Portable40.sln
+Extracting  Source\Src\BadgeKeeper.Sample
+Extracting  Source\Src\BadgeKeeper.Sample\BadgeKeeper.Sample.Shared
+Extracting  Source\Src\BadgeKeeper.Sample\BadgeKeeper.Sample.Shared\App.xaml
+Extracting  Source\Src\BadgeKeeper.Sample\BadgeKeeper.Sample.Shared\App.xaml.cs
+Extracting  Source\Src\BadgeKeeper.Sample\BadgeKeeper.Sample.Shared\BadgeKeeper.Sample.Shared.projitems
+Extracting  Source\Src\BadgeKeeper.Sample\BadgeKeeper.Sample.Shared\BadgeKeeper.Sample.Shared.shproj
+Extracting  Source\Src\BadgeKeeper.Sample\BadgeKeeper.Sample.Windows
+Extracting  Source\Src\BadgeKeeper.Sample\BadgeKeeper.Sample.WindowsPhone
+Extracting  Source\Src\BadgeKeeper.Sample\BadgeKeeper.Sample.WindowsPhone\Assets
+Extracting  Source\Src\BadgeKeeper.Sample\BadgeKeeper.Sample.WindowsPhone\Assets\Logo.scale-240.png
+Extracting  Source\Src\BadgeKeeper.Sample\BadgeKeeper.Sample.WindowsPhone\Assets\SmallLogo.scale-240.png
+Extracting  Source\Src\BadgeKeeper.Sample\BadgeKeeper.Sample.WindowsPhone\Assets\SplashScreen.scale-240.png
+Extracting  Source\Src\BadgeKeeper.Sample\BadgeKeeper.Sample.WindowsPhone\Assets\Square71x71Logo.scale-240.png
+Extracting  Source\Src\BadgeKeeper.Sample\BadgeKeeper.Sample.WindowsPhone\Assets\StoreLogo.scale-240.png
+Extracting  Source\Src\BadgeKeeper.Sample\BadgeKeeper.Sample.WindowsPhone\Assets\WideLogo.scale-240.png
+Extracting  Source\Src\BadgeKeeper.Sample\BadgeKeeper.Sample.WindowsPhone\BadgeKeeper.Sample.WindowsPhone.csproj
+Extracting  Source\Src\BadgeKeeper.Sample\BadgeKeeper.Sample.WindowsPhone\MainPage.xaml
+Extracting  Source\Src\BadgeKeeper.Sample\BadgeKeeper.Sample.WindowsPhone\MainPage.xaml.cs
+Extracting  Source\Src\BadgeKeeper.Sample\BadgeKeeper.Sample.WindowsPhone\Package.appxmanifest
+Extracting  Source\Src\BadgeKeeper.Sample\BadgeKeeper.Sample.WindowsPhone\Properties
+Extracting  Source\Src\BadgeKeeper.Sample\BadgeKeeper.Sample.WindowsPhone\Properties\AssemblyInfo.cs
+Extracting  Source\Src\BadgeKeeper.Sample\BadgeKeeper.Sample.Windows\Assets
+Extracting  Source\Src\BadgeKeeper.Sample\BadgeKeeper.Sample.Windows\Assets\Logo.scale-100.png
+Extracting  Source\Src\BadgeKeeper.Sample\BadgeKeeper.Sample.Windows\Assets\SmallLogo.scale-100.png
+Extracting  Source\Src\BadgeKeeper.Sample\BadgeKeeper.Sample.Windows\Assets\SplashScreen.scale-100.png
+Extracting  Source\Src\BadgeKeeper.Sample\BadgeKeeper.Sample.Windows\Assets\StoreLogo.scale-100.png
+Extracting  Source\Src\BadgeKeeper.Sample\BadgeKeeper.Sample.Windows\BadgeKeeper.Sample.Windows.csproj
+Extracting  Source\Src\BadgeKeeper.Sample\BadgeKeeper.Sample.Windows\BadgeKeeper.Sample.Windows_TemporaryKey.pfx
+Extracting  Source\Src\BadgeKeeper.Sample\BadgeKeeper.Sample.Windows\MainPage.xaml
+Extracting  Source\Src\BadgeKeeper.Sample\BadgeKeeper.Sample.Windows\MainPage.xaml.cs
+Extracting  Source\Src\BadgeKeeper.Sample\BadgeKeeper.Sample.Windows\Package.appxmanifest
+Extracting  Source\Src\BadgeKeeper.Sample\BadgeKeeper.Sample.Windows\Properties
+Extracting  Source\Src\BadgeKeeper.Sample\BadgeKeeper.Sample.Windows\Properties\AssemblyInfo.cs
+Extracting  Source\Src\BadgeKeeper.sln
+Extracting  Source\Src\BadgeKeeper\BadgeKeeper.cs
+Extracting  Source\Src\BadgeKeeper\BadgeKeeper.csproj
+Extracting  Source\Src\BadgeKeeper\BadgeKeeper.Net35.csproj
+Extracting  Source\Src\BadgeKeeper\BadgeKeeper.Net40.csproj
+Extracting  Source\Src\BadgeKeeper\BadgeKeeper.nuspec
+Extracting  Source\Src\BadgeKeeper\BadgeKeeper.Portable.csproj
+Extracting  Source\Src\BadgeKeeper\BadgeKeeper.Portable40.csproj
+Extracting  Source\Src\BadgeKeeper\Entities
+Extracting  Source\Src\BadgeKeeper\Exceptions
+Extracting  Source\Src\BadgeKeeper\Exceptions\BadgeKeeperException.cs
+Extracting  Source\Src\BadgeKeeper\Network
+Extracting  Source\Src\BadgeKeeper\Network\BadgeKeeperApiService.cs
+Extracting  Source\Src\BadgeKeeper\Network\BadgeKeeperResponse.cs
+Extracting  Source\Src\BadgeKeeper\Network\BadgeKeeperResponseError.cs
+Extracting  Source\Src\BadgeKeeper\Network\IBadgeKeeperApi.cs
+Extracting  Source\Src\BadgeKeeper\Objects
+Extracting  Source\Src\BadgeKeeper\Objects\BadgeKeeperPair.cs
+Extracting  Source\Src\BadgeKeeper\Objects\Models
+Extracting  Source\Src\BadgeKeeper\Objects\Models\BadgeKeeperAchievement.cs
+Extracting  Source\Src\BadgeKeeper\Objects\Models\BadgeKeeperProject.cs
+Extracting  Source\Src\BadgeKeeper\Objects\Models\BadgeKeeperReward.cs
+Extracting  Source\Src\BadgeKeeper\Objects\Models\BadgeKeeperUnlockedAchievement.cs
+Extracting  Source\Src\BadgeKeeper\Objects\Models\BadgeKeeperUserAchievement.cs
+Extracting  Source\Src\BadgeKeeper\project.json
+Extracting  Source\Src\BadgeKeeper\Properties
+Extracting  Source\Src\BadgeKeeper\Properties\AssemblyInfo.cs
+
+Everything is Ok
+
+Folders: 24
+Files: 70
+Size:       4685219
+Compressed: 1475042
+
+Build Succeeded!
+
+----------------------------------------------------------------------
+Build Time Report
+----------------------------------------------------------------------
+Name    Duration
+----    --------
+Clean   00:00:02.0313850
+Build   00:00:08.1358324
+Package 00:00:06.0815271
+Deploy  00:00:01.8503332
+Total:  00:00:18.5010157
 **********************
 Windows PowerShell transcript end
-End time: 20151027115044
+End time: 20151027120639
 **********************

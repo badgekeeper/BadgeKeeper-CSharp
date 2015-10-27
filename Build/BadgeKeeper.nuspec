@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
+  <metadata>
+    <id>BadgeKeeper</id>
+    <version></version>
+    <title>BadgeKeeper</title>
+    <authors>Alexander Pukhov</authors>
+	<owners>Badge Keeper</owners>
+    <description>Badge Keeper .NET client library. Easily add achievements to your app.</description>
+    <language>en-US</language>
+    <projectUrl>https://badgekeeper.net</projectUrl>
+    <iconUrl>https://badgekeeper.blob.core.windows.net/icons/badgekeeper.png</iconUrl>
+	<requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <licenseUrl>https://github.com/badgekeeper/BadgeKeeper-CSharp/blob/master/LICENSE</licenseUrl>
+    <copyright>Copyright Badge Keeper 2015</copyright>
+    <tags>achievements badges highscore leaderboard reward api cloud service</tags>
+  </metadata>
+</package>

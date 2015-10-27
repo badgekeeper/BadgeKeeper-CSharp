@@ -13,8 +13,6 @@
   $baseDir  = resolve-path ..
   $buildDir = "$baseDir\Build"
   $sourceDir = "$baseDir\Sources"
-  $toolsDir = "$baseDir\Tools"
-  $docDir = "$baseDir\Doc"
   $releaseDir = "$baseDir\Release"
   $workingDir = "$baseDir\$workingName"
   $workingSourceDir = "$workingDir\Sources"
@@ -104,9 +102,6 @@ task Package -depends Build {
 
     $xml.save($nuspecPath)
 
-    New-Item -Path $workingDir\NuGet\tools -ItemType Directory
-    Copy-Item -Path "$buildDir\install.ps1" -Destination $workingDir\NuGet\tools\install.ps1 -recurse
-    
     foreach ($build in $builds)
     {
       if ($build.NuGetDir)
@@ -130,32 +125,21 @@ task Package -depends Build {
     move -Path .\*.nupkg -Destination $workingDir\NuGet
   }
   
-  Copy-Item -Path $docDir\readme.txt -Destination $workingDir\Package\
-  Copy-Item -Path $docDir\license.txt -Destination $workingDir\Package\
-
   robocopy $workingSourceDir $workingDir\Package\Source\Src /MIR /NFL /NDL /NJS /NC /NS /NP /XD bin obj TestResults AppPackages .vs artifacts /XF *.suo *.user *.lock.json | Out-Default
   robocopy $buildDir $workingDir\Package\Source\Build /MIR /NFL /NDL /NJS /NC /NS /NP /XF runbuild.txt | Out-Default
-  robocopy $docDir $workingDir\Package\Source\Doc /MIR /NFL /NDL /NJS /NC /NS /NP | Out-Default
-  robocopy $toolsDir $workingDir\Package\Source\Tools /MIR /NFL /NDL /NJS /NC /NS /NP | Out-Default
   
-  exec { .\Tools\7-zip\7za.exe a -tzip $workingDir\$zipFileName $workingDir\Package\* | Out-Default } "Error zipping"
+  exec { .\Build\7za.exe a -tzip $workingDir\$zipFileName $workingDir\Package\* | Out-Default } "Error zipping"
 }
 
 # Unzip package to a location
 task Deploy -depends Package {
-  exec { .\Tools\7-zip\7za.exe x -y "-o$workingDir\Deployed" $workingDir\$zipFileName | Out-Default } "Error unzipping"
+  exec { .\Build\7za.exe x -y "-o$workingDir\Deployed" $workingDir\$zipFileName | Out-Default } "Error unzipping"
 }
 
 function MSBuildBuild($build)
 {
   $name = $build.Name
   $finalDir = $build.FinalDir
-
-  Write-Host
-  Write-Host "Restoring $workingSourceDir\$name.sln" -ForegroundColor Green
-  [Environment]::SetEnvironmentVariable("EnableNuGetPackageRestore", "true", "Process")
-  #exec { .\Build\NuGet.exe update -self }
-  #exec { .\Build\NuGet.exe restore "$workingSourceDir\$name.sln" -verbosity detailed -configfile $workingSourceDir\nuget.config | Out-Default } "Error restoring $name"
 
   $constants = GetConstants $build.Constants
 
