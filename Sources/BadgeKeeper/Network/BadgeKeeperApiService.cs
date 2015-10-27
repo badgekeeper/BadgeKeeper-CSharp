@@ -131,7 +131,7 @@ namespace BadgeKeeper.Network
 
         private static Type FromJson<Type>(string data)
         {
-            if (data != null && data.Length > 0)
+            if (!string.IsNullOrEmpty(data))
             {
                 var serializer = new DataContractJsonSerializer(typeof(Type));
                 using (var stream = new System.IO.MemoryStream(Encoding.UTF8.GetBytes(data)))

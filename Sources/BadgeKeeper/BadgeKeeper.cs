@@ -132,7 +132,7 @@ namespace BadgeKeeper
         private void CheckParameters()
         {
             CheckProjectParameters();
-            if (_userId == null || _userId.Length <= 0)
+            if (string.IsNullOrEmpty(_userId))
             {
                 throw new Exceptions.BadgeKeeperException("User Id property is not configured.");
             }
@@ -143,7 +143,7 @@ namespace BadgeKeeper
         /// </summary>
         private void CheckProjectParameters()
         {
-            if (_projectId == null || _projectId.Length <= 0)
+            if (string.IsNullOrEmpty(_projectId))
             {
                 throw new Exceptions.BadgeKeeperException("Project Id property is not configured.");
             }
