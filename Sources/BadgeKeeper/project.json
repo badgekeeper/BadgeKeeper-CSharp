@@ -29,6 +29,7 @@
         "define": [ "PORTABLE" ]
       },
       "frameworkAssemblies": {
+	    "Microsoft.CSharp": "",
         "System": "",
         "System.Runtime.Serialization": "",
         "System.Xml": ""
@@ -39,10 +40,14 @@
         "define": [ "PORTABLE40" ]
       },
       "frameworkAssemblies": {
+	    "mscorlib": "",
         "System": "",
         "System.Runtime.Serialization": "",
         "System.Xml": ""
       }
     }
+  },
+  "runtimes": {
+    "win-anycpu": {}
   }
 }

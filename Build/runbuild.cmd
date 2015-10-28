@@ -1,2 +1,2 @@
 cls
-powershell -Command "& { [Console]::WindowWidth = 150; [Console]::WindowHeight = 40; Start-Transcript %~dp0runbuild.txt; Import-Module %~dp0psake.psm1; Invoke-psake %~dp0build.ps1 %*; Stop-Transcript; }"
+powershell -Command "& { [Console]::WindowWidth = 140; [Console]::WindowHeight = 40; Start-Transcript %~dp0runbuild.txt; Import-Module %~dp0psake.psm1; Invoke-psake %~dp0build.ps1 %*; Stop-Transcript; }"

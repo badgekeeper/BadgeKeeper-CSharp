@@ -1,8 +1,7 @@
 ﻿properties { 
-  $zipFileName = "BadgeKeeper01alpha.zip"
   $majorVersion = "0.1"
-  $majorWithReleaseVersion = "0.1.1"
-  $nugetPrelease = "release"
+  $majorWithReleaseVersion = "0.1.2"
+  $nugetPrelease = "beta1"
   $version = GetVersion $majorWithReleaseVersion
   $packageId = "BadgeKeeper"
   $buildNuGet = $true
@@ -101,6 +100,9 @@ task Package -depends Build {
 
     $xml.save($nuspecPath)
 
+	New-Item -Path $workingDir\NuGet\tools -ItemType Directory
+	Copy-Item -Path "$buildDir\install.ps1" -Destination $workingDir\NuGet\tools\install.ps1 -recurse
+	
     foreach ($build in $builds)
     {
       if ($build.NuGetDir)
