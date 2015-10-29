@@ -24,12 +24,11 @@
         "System.Xml": ""
       }
     },
-	".NETPortable,Version=v4.5,Profile=Profile259": {
+	".NETPortable,Version=v4.5,Profile=Profile344": {
       "compilationOptions": {
         "define": [ "PORTABLE" ]
       },
       "frameworkAssemblies": {
-	    "Microsoft.CSharp": "",
         "System": "",
         "System.Runtime.Serialization": "",
         "System.Xml": ""
@@ -40,7 +39,6 @@
         "define": [ "PORTABLE40" ]
       },
       "frameworkAssemblies": {
-	    "mscorlib": "",
         "System": "",
         "System.Runtime.Serialization": "",
         "System.Xml": ""
