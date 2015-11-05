@@ -87,6 +87,7 @@ namespace BadgeKeeper.Network
                 // make request
                 client.DownloadStringAsync(new Uri(url));
             }
+#else
 #endif
         }
 
@@ -121,6 +122,8 @@ namespace BadgeKeeper.Network
                 // make request
                 client.UploadStringAsync(new Uri(url), "POST", body);
             }
+#else
+
 #endif
         }
 

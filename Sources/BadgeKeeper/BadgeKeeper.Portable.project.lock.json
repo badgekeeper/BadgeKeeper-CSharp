@@ -1,0 +1,13 @@
+{
+  "locked": false,
+  "version": 1,
+  "targets": {
+    ".NETPortable,Version=v4.5,Profile=Profile344": {},
+    ".NETPortable,Version=v4.5,Profile=Profile344/win-anycpu": {}
+  },
+  "libraries": {},
+  "projectFileDependencyGroups": {
+    "": [],
+    ".NETPortable,Version=v4.5,Profile=Profile344": []
+  }
+}

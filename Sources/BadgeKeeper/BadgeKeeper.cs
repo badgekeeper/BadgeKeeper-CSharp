@@ -36,12 +36,14 @@ namespace BadgeKeeper
         private IBadgeKeeperApi _apiService;
 
         // Temporary storage
-        private Dictionary<string, List<BadgeKeeperPair<string, double>>> postVariables = new Dictionary<string, List<BadgeKeeperPair<string, double>>>();
-        private Dictionary<string, List<BadgeKeeperPair<string, double>>> incrementVariables = new Dictionary<string, List<BadgeKeeperPair<string, double>>>();
+        private Dictionary<string, List<BadgeKeeperPair<string, double>>> _postVariables = new Dictionary<string, List<BadgeKeeperPair<string, double>>>();
+        private Dictionary<string, List<BadgeKeeperPair<string, double>>> _incrementVariables = new Dictionary<string, List<BadgeKeeperPair<string, double>>>();
 
         private BadgeKeeper()
         {
             _apiService = new BadgeKeeperApiService();
+            _postVariables = new Dictionary<string, List<BadgeKeeperPair<string, double>>>();
+            _incrementVariables = new Dictionary<string, List<BadgeKeeperPair<string, double>>>();
         }
 
         /// <summary>
@@ -113,8 +115,112 @@ namespace BadgeKeeper
         /// <param name="onError">Callback with failed response</param>
         public static void GetUserAchievements(Action<BadgeKeeperUserAchievement[]> onSuccess, Action<BadgeKeeperResponseError> onError)
         {
-            Instance().CheckParameters();
+            Instance().CheckParameters(Instance()._userId);
             Api().GetUserAchievements(Instance()._projectId, Instance()._userId, Instance()._shouldLoadIcons, onSuccess, onError);
+        }
+
+        /// <summary>
+        /// Sets a new value for specified key.
+        /// </summary>
+        /// <param name="key">Target key to owervrite and then validate achievement.</param>
+        /// <param name="value">New value for storing before send post request.</param>
+        public static void PreparePostKeyWithValue(string key, double value)
+        {
+            Instance().PrepareKeyWithValue(key, value, Instance()._postVariables);
+        }
+
+        /// <summary>
+        /// Sets a new value for specified key.
+        /// </summary>
+        /// <param name="key">Target key to increment and then validate achievement.</param>
+        /// <param name="value">Increment value for storing before send increment request.</param>
+        public static void PrepareIncrementKeyWithValue(string key, double value)
+        {
+            Instance().PrepareKeyWithValue(key, value, Instance()._incrementVariables);
+        }
+
+        /// <summary>
+        /// Sends all prepared values to server to overwrite them and validate achievements completion.
+        /// Before sending values must be prepared via PreparePostKeyWithValue method calls.
+        /// </summary>
+        /// <param name="onSuccess">Callback with success response</param>
+        /// <param name="onError">Callback with failed response</param>
+        public static void PostPreparedValues(Action<BadgeKeeperUnlockedAchievement[]> onSuccess, Action<BadgeKeeperResponseError> onError)
+        {
+            PostPreparedValues(Instance()._userId, onSuccess, onError);
+        }
+
+        /// <summary>
+        /// Overload PostPreparedValues method for specific user.
+        /// Sends all prepared values to server to overwrite them and validate achievements completion.
+        /// Before sending values must be prepared via PreparePostKeyWithValue method calls.
+        /// </summary>
+        /// <param name="userId">Post values for specific user</param>
+        /// <param name="onSuccess">Callback with success response</param>
+        /// <param name="onError">Callback with failed response</param>
+        public static void PostPreparedValues(string userId, Action<BadgeKeeperUnlockedAchievement[]> onSuccess, Action<BadgeKeeperResponseError> onError)
+        {
+            Instance().CheckParameters(userId);
+            if (Instance()._postVariables.ContainsKey(userId))
+            {
+                List<BadgeKeeperPair<string, double>> pairs = Instance()._postVariables[userId];
+                if (pairs != null || pairs.Count > 0)
+                {
+                    Action<BadgeKeeperUnlockedAchievement[]> onInternallSuccess = (BadgeKeeperUnlockedAchievement[] achievements) =>
+                    {
+                        //TODO: save unlocked achievements to DB
+                        if (onSuccess != null)
+                        {
+                            onSuccess(achievements);
+                        }
+                    };
+
+                    Api().PostUserVariables(Instance()._projectId, Instance()._userId, pairs, onInternallSuccess, onError);
+                    Instance()._postVariables[userId].Clear();
+                }
+            }
+        }
+
+        /// <summary>
+        /// Sends all prepared values to server to increment them and validate achievements completion.
+        /// Before sending values must be prepared via PrepareIncrementKeyWithValue method calls.
+        /// </summary>
+        /// <param name="onSuccess">Callback with success response</param>
+        /// <param name="onError">Callback with failed response</param>
+        public static void IncrementPreparedValues(Action<BadgeKeeperUnlockedAchievement[]> onSuccess, Action<BadgeKeeperResponseError> onError)
+        {
+            IncrementPreparedValues(Instance()._userId, onSuccess, onError);
+        }
+
+        /// <summary>
+        /// Overload IncrementPreparedValues method for specific user.
+        /// Sends all prepared values to server to overwrite them and validate achievements completion.
+        /// Before sending values must be prepared via PrepareIncrementKeyWithValue method calls.
+        /// </summary>
+        /// <param name="userId">Post values for specific user</param>
+        /// <param name="onSuccess">Callback with success response</param>
+        /// <param name="onError">Callback with failed response</param>
+        public static void IncrementPreparedValues(string userId, Action<BadgeKeeperUnlockedAchievement[]> onSuccess, Action<BadgeKeeperResponseError> onError)
+        {
+            Instance().CheckParameters(userId);
+            if (Instance()._postVariables.ContainsKey(userId))
+            {
+                List<BadgeKeeperPair<string, double>> pairs = Instance()._incrementVariables[userId];
+                if (pairs != null || pairs.Count > 0)
+                {
+                    Action<BadgeKeeperUnlockedAchievement[]> onInternallSuccess = (BadgeKeeperUnlockedAchievement[] achievements) =>
+                    {
+                        //TODO: save unlocked achievements to DB
+                        if (onSuccess != null)
+                        {
+                            onSuccess(achievements);
+                        }
+                    };
+
+                    Api().IncrementUserVariables(Instance()._projectId, Instance()._userId, pairs, onInternallSuccess, onError);
+                    Instance()._incrementVariables[userId].Clear();
+                }
+            }
         }
 
         /// <summary>
@@ -129,10 +235,10 @@ namespace BadgeKeeper
         /// <summary>
         /// Validate project and user settings. If failed - throw BadgeKeepeException.
         /// </summary>
-        private void CheckParameters()
+        private void CheckParameters(string userId)
         {
             CheckProjectParameters();
-            if (string.IsNullOrEmpty(_userId))
+            if (string.IsNullOrEmpty(userId))
             {
                 throw new Exceptions.BadgeKeeperException("User Id property is not configured.");
             }
@@ -147,6 +253,17 @@ namespace BadgeKeeper
             {
                 throw new Exceptions.BadgeKeeperException("Project Id property is not configured.");
             }
+        }
+
+        private void PrepareKeyWithValue(string key, double value, Dictionary<string, List<BadgeKeeperPair<string, double>>> dictionary)
+        {
+            if (!dictionary.ContainsKey(key))
+            {
+                dictionary.Add(key, new List<BadgeKeeperPair<string, double>>());
+            }
+
+            BadgeKeeperPair<string, double> pair = new BadgeKeeperPair<string, double>(key, value);
+            dictionary[key].Add(pair);
         }
     }
 }
