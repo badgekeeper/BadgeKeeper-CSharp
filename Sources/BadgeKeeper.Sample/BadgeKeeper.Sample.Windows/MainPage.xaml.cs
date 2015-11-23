@@ -1,25 +1,24 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Runtime.InteropServices.WindowsRuntime;
-using Windows.Foundation;
-using Windows.Foundation.Collections;
+﻿// Copyright 2015 Badge Keeper
+// 
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+// 
+// http://www.apache.org/licenses/LICENSE-2.0
+// 
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+
+using System;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Controls.Primitives;
-using Windows.UI.Xaml.Data;
-using Windows.UI.Xaml.Input;
-using Windows.UI.Xaml.Media;
-using Windows.UI.Xaml.Navigation;
-using BadgeKeeper.Objects.Models;
-using BadgeKeeper.Network;
-using System.Net.Http;
-using System.Net.Http.Headers;
-using System.Runtime.Serialization.Json;
-using System.Text;
-using System.Threading;
+using Windows.UI.Popups;
 using System.Threading.Tasks;
+using BadgeKeeper.Network;
+using BadgeKeeper.Objects.Models;
 
 // The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=234238
 
@@ -31,11 +30,56 @@ namespace BadgeKeeper.Sample
     public sealed partial class MainPage : Page
     {
         private TextBox _responseTextBox;
+        private TextBox _userIdTextBox;
+        private Button _getProjectButton;
+        private Button _getUserButton;
+        private Button _postButton;
+        private Button _incrementButton;
+
+        private static int posts = 0;
+        private static int increments = 0;
+
+        private Action<BadgeKeeperResponseError> _onError;
+        private Action<BadgeKeeperUnlockedAchievement[]> _onUnlocked;
+        private Action<BadgeKeeperAchievement[]> _onProject;
+        private Action<BadgeKeeperUserAchievement[]> _onUser;
 
         public MainPage()
         {
             this.InitializeComponent();
+
+            _userIdTextBox = (TextBox)FindName("UserIdTextBox");
             _responseTextBox = (TextBox)FindName("ResponseTextBox");
+            _getProjectButton = (Button)FindName("GetProjectButton");
+            _getUserButton = (Button)FindName("GetAchievementsButton");
+            _postButton = (Button)FindName("PostVariablesButton");
+            _incrementButton = (Button)FindName("IncrementVariablesButton");
+
+            _onError = (BadgeKeeperResponseError error) =>
+            {
+                DidReceiveResponseError(error);
+            };
+
+            _onUnlocked = (BadgeKeeperUnlockedAchievement[] achievements) =>
+            {
+                string text = BadgeKeeperHelper.UnlockedAchievementsToString(achievements);
+                SetResponseText(text);
+                SetLoading(false);
+            };
+
+            _onProject = (BadgeKeeperAchievement[] achievements) =>
+            {
+                string text = BadgeKeeperHelper.ProjectAchievementsToString(achievements);
+                SetResponseText(text);
+                SetLoading(false);
+            };
+
+            _onUser = (BadgeKeeperUserAchievement[] achievements) =>
+            {
+                string text = BadgeKeeperHelper.UserAchievementsToString(achievements);
+                SetResponseText(text);
+                SetLoading(false);
+            };
 
             BadgeKeeper.SetProjectId("a93a3a6d-d5f3-4b5c-b153-538063af6121");
         }
@@ -43,45 +87,46 @@ namespace BadgeKeeper.Sample
         private void GetProjectAchievementsClick(object sender, RoutedEventArgs e)
         {
             SetLoading(true);
-            SetResponseText("");
-
-            BadgeKeeper.GetProjectAchievements(
-                (BadgeKeeperAchievement[] achievements) =>
-                {
-                    string text = "Achievements: [";
-                    foreach (var achievement in achievements)
-                    {
-                        string atext = $"{{ \"Title\": \"{achievement.DisplayName}\", \"Description\": \"{achievement.Description}\" }}";
-                        if (achievements.Last() != achievement)
-                        {
-                            atext += ", ";
-                        }
-                        text += atext;
-                    }
-                    text += "]";
-
-                    SetResponseText(text);
-                    SetLoading(false);
-                },
-                (BadgeKeeperResponseError error) =>
-                {
-                    DidReceiveResponseError(error);
-                });
+            BadgeKeeper.GetProjectAchievements(_onProject, _onError);
         }
         
-        private void GetUserAchievementsClick(object sender, RoutedEventArgs e)
+        private async void GetUserAchievementsClick(object sender, RoutedEventArgs e)
         {
-
+            bool result = await IsLoginValid();
+            if (result)
+            {
+                SetLoading(true);
+                BadgeKeeper.SetUserId(_userIdTextBox.Text);
+                BadgeKeeper.GetUserAchievements(_onUser, _onError);
+            }
         }
 
-        private void PostUserValuesClick(object sender, RoutedEventArgs e)
+        private async void PostUserValuesClick(object sender, RoutedEventArgs e)
         {
+            bool result = await IsLoginValid();
+            if (result)
+            {
+                ++posts;
 
+                SetLoading(true);
+                BadgeKeeper.SetUserId(_userIdTextBox.Text);
+                BadgeKeeper.PreparePostKeyWithValue("x", posts);
+                BadgeKeeper.PostPreparedValues(_onUnlocked, _onError);
+            }
         }
 
-        private void IncrementUserValuesClick(object sender, RoutedEventArgs e)
+        private async void IncrementUserValuesClick(object sender, RoutedEventArgs e)
         {
+            bool result = await IsLoginValid();
+            if (result)
+            {
+                ++increments;
 
+                SetLoading(true);
+                BadgeKeeper.SetUserId(_userIdTextBox.Text);
+                BadgeKeeper.PrepareIncrementKeyWithValue("x", increments);
+                BadgeKeeper.IncrementPreparedValues(_onUnlocked, _onError);
+            }
         }
 
         private void DidReceiveResponseError(BadgeKeeperResponseError error)
@@ -96,32 +141,30 @@ namespace BadgeKeeper.Sample
             _responseTextBox.Text = text;
         }
 
+        private async Task<bool> IsLoginValid()
+        {
+            string login = _userIdTextBox.Text;
+            if (string.IsNullOrEmpty(login))
+            {
+                var dialog = new MessageDialog("You should specify your User ID first!");
+                await dialog.ShowAsync();
+                return false;
+            }
+            return true;
+        }
+
         private void SetLoading(bool isLoading)
         {
-            var userIdTextBox = (TextBox)FindName("UserIdTextBox");
+            _userIdTextBox.IsEnabled = !isLoading;
+            _getProjectButton.IsEnabled = !isLoading;
+            _getUserButton.IsEnabled = !isLoading;
+            _postButton.IsEnabled = !isLoading;
+            _incrementButton.IsEnabled = !isLoading;
+            _responseTextBox.IsEnabled = !isLoading;
 
             if (isLoading)
             {
-                userIdTextBox.IsEnabled = false;
-
-                //self.loginTextField.enabled = NO;
-                //self.postVariablesButton.enabled = NO;
-                //self.incrementVariablesButton.enabled = NO;
-                //self.getProjectAchievementsButton.enabled = NO;
-                //self.getUserAchievementsButton.enabled = NO;
-                //[self.activityIndicatorView startAnimating];
-
-            }
-            else
-            {
-                userIdTextBox.IsEnabled = true;
-
-                //self.loginTextField.enabled = YES; 
-                //self.postVariablesButton.enabled = YES; 
-                //self.incrementVariablesButton.enabled = YES; 
-                //self.getProjectAchievementsButton.enabled = YES; 
-                //self.getUserAchievementsButton.enabled = YES; 
-                //[self.activityIndicatorView stopAnimating];
+                SetResponseText("Loading data from server ...");
             }
         }
     }

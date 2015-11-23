@@ -9,10 +9,10 @@
 
     <StackPanel VerticalAlignment="Center">
         <TextBox x:Name="UserIdTextBox" PlaceholderText="User Id" Width="250" Margin="10"></TextBox>
-        <Button x:Name="GetProjectAchievementsButton" HorizontalAlignment="Center" Width="250" Margin="10" Click="GetProjectAchievementsClick">Get Project achievements</Button>
-        <Button HorizontalAlignment="Center" Width="250" Margin="10" Click="GetUserAchievementsClick">Get User achievements</Button>
-        <Button HorizontalAlignment="Center" Width="250" Margin="10" Click="PostUserValuesClick">Post User variables</Button>
-        <Button HorizontalAlignment="Center" Width="250" Margin="10" Click="IncrementUserValuesClick">Increment User achievements</Button>
+        <Button x:Name="GetProjectButton" HorizontalAlignment="Center" Width="250" Margin="10" Click="GetProjectAchievementsClick">Get Project achievements</Button>
+        <Button x:Name="GetAchievementsButton" HorizontalAlignment="Center" Width="250" Margin="10" Click="GetUserAchievementsClick">Get User achievements</Button>
+        <Button x:Name="PostVariablesButton" HorizontalAlignment="Center" Width="250" Margin="10" Click="PostUserValuesClick">Post User variables</Button>
+        <Button x:Name="IncrementVariablesButton" HorizontalAlignment="Center" Width="250" Margin="10" Click="IncrementUserValuesClick">Increment User achievements</Button>
         <TextBox x:Name="ResponseTextBox" Width="250" Margin="10" Height="150" TextWrapping="Wrap" AcceptsReturn="True" PlaceholderText="Response"></TextBox>
     </StackPanel>
 </Page>

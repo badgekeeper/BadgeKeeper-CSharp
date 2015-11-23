@@ -13,6 +13,11 @@ Sources/BadgeKeeper.Sample/BadgeKeeper.Sample.WindowsPhone/bin
 Sources/BadgeKeeper.Sample/BadgeKeeper.Sample.WindowsPhone/obj
 Sources/BadgeKeeper.Sample/BadgeKeeper.Sample.WindowsPhone/csx
 Sources/BadgeKeeper.Sample/BadgeKeeper.Sample.WindowsPhone/rcf
+Sources/BadgeKeeper.Sample/BadgeKeeper.Sample.Console/.vs
+Sources/BadgeKeeper.Sample/BadgeKeeper.Sample.Console/bin
+Sources/BadgeKeeper.Sample/BadgeKeeper.Sample.Console/obj
+Sources/BadgeKeeper.Sample/BadgeKeeper.Sample.Console/csx
+Sources/BadgeKeeper.Sample/BadgeKeeper.Sample.Console/rcf
 Build/runbuild.txt
 Working/
 packages/

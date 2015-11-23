@@ -12,17 +12,21 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+using System.Runtime.Serialization;
+
 namespace BadgeKeeper.Objects.Models
 {
     /// <summary>
     /// Extended BadgeKeeperUserAchievement. Sends when user hit achievement.
     /// Contains extra information about rewards for specified user.
     /// </summary>
-    public class BadgeKeeperUnlockedAchievement
+    [DataContract]
+    public class BadgeKeeperUnlockedAchievement : BadgeKeeperUserAchievement
     {
         /// <summary>
         /// Array of Rewards provided by achievement.
         /// </summary>
+        [DataMember]
         public readonly BadgeKeeperReward[] Rewards;
     }
 }

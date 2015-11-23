@@ -32,9 +32,18 @@ namespace BadgeKeeper.Network
     class BadgeKeeperApiService : IBadgeKeeperApi
     {
         private static string BaseUrl = "https://api.badgekeeper.net/";
+#if (PORTABLE40 || PORTABLE)
+        private HttpClient _client = new HttpClient();
+#endif
 
         public BadgeKeeperApiService()
         {
+#if (PORTABLE40 || PORTABLE)
+            _client = new HttpClient();
+            _client.Timeout = TimeSpan.FromSeconds(30);
+            _client.DefaultRequestHeaders.Accept.Clear();
+            _client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+#endif
         }
 
         public void GetProjectAchievements(string projectId, bool shouldLoadIcons, Action<BadgeKeeperProject> onSuccess, Action<BadgeKeeperResponseError> onError)
@@ -74,17 +83,20 @@ namespace BadgeKeeper.Network
                 // handler
                 client.DownloadStringCompleted += (s, e) =>
                 {
-                    ProcessNonPortableResponse(e.Result, onSuccess, onError);
+                    try
+                    {
+                        ProcessNonPortableResponse(e.Result, onSuccess, onError);
+                    }
+                    catch (Exception ex)
+                    {
+                        onError(new BadgeKeeperResponseError(-1, ex.Message));
+                    }
                 };
                 // make request
                 client.DownloadStringAsync(new Uri(url));
             }
 #else
-            var client = new HttpClient();
-            client.Timeout = TimeSpan.FromSeconds(30);
-            client.DefaultRequestHeaders.Accept.Clear();
-            client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-            client.GetAsync(url).ContinueWith(task => ProcessPortableResponse(task, onSuccess, onError), TaskScheduler.FromCurrentSynchronizationContext());
+            _client.GetAsync(url).ContinueWith(task => ProcessPortableResponse(task, onSuccess, onError), TaskScheduler.FromCurrentSynchronizationContext());
 #endif
         }
 
@@ -95,21 +107,26 @@ namespace BadgeKeeper.Network
             {
                 client.Headers.Clear();
                 client.Headers.Add(HttpRequestHeader.Accept, "application/json");
+                client.Headers.Add(HttpRequestHeader.ContentType, "application/json");
                 client.Encoding = Encoding.UTF8;
                 // handler
-                client.DownloadStringCompleted += (s, e) =>
+                client.UploadStringCompleted += (s, e) =>
                 {
-                    ProcessNonPortableResponse(e.Result, onSuccess, onError);
+                    try
+                    {
+                        ProcessNonPortableResponse(e.Result, onSuccess, onError);
+                    }
+                    catch (Exception ex)
+                    {
+                        onError(new BadgeKeeperResponseError(-1, ex.Message));
+                    }
                 };
                 // make request
                 client.UploadStringAsync(new Uri(url), "POST", body);
             }
 #else
-            var client = new HttpClient();
-            client.Timeout = TimeSpan.FromSeconds(30);
-            client.DefaultRequestHeaders.Accept.Clear();
-            client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-            client.PostAsync(url, new StringContent(body)).ContinueWith(task => ProcessPortableResponse(task, onSuccess, onError), TaskScheduler.FromCurrentSynchronizationContext());
+            StringContent content = new StringContent(body, Encoding.UTF8, "application/json");
+            _client.PostAsync(url, content).ContinueWith(task => ProcessPortableResponse(task, onSuccess, onError), TaskScheduler.FromCurrentSynchronizationContext());
 #endif
         }
 

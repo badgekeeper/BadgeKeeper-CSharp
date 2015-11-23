@@ -1,7 +1,7 @@
 ﻿properties { 
   $majorVersion = "0.1"
   $majorWithReleaseVersion = "0.1.3"
-  $nugetPrelease = "release"
+  #$nugetPrelease = "release"
   $version = GetVersion $majorWithReleaseVersion
   $packageId = "BadgeKeeper"
   $buildNuGet = $true

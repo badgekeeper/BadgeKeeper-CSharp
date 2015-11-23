@@ -12,20 +12,25 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+using System.Runtime.Serialization;
+
 namespace BadgeKeeper.Objects.Models
 {
     /// <summary>
     /// Present reward element in Badge Keeper service.
     /// </summary>
+    [DataContract]
     public class BadgeKeeperReward
     {
         /// <summary>
         /// Name of reward.
         /// </summary>
+        [DataMember]
         public readonly string Name;
         /// <summary>
         /// Value of reward.
         /// </summary>
+        [DataMember]
         public readonly double Value;
     }
 }

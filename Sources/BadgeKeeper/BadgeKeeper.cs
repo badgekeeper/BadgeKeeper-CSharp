@@ -203,7 +203,7 @@ namespace BadgeKeeper
         public static void IncrementPreparedValues(string userId, Action<BadgeKeeperUnlockedAchievement[]> onSuccess, Action<BadgeKeeperResponseError> onError)
         {
             Instance().CheckParameters(userId);
-            if (Instance()._postVariables.ContainsKey(userId))
+            if (Instance()._incrementVariables.ContainsKey(userId))
             {
                 List<BadgeKeeperPair<string, double>> pairs = Instance()._incrementVariables[userId];
                 if (pairs != null || pairs.Count > 0)
@@ -257,13 +257,18 @@ namespace BadgeKeeper
 
         private void PrepareKeyWithValue(string key, double value, Dictionary<string, List<BadgeKeeperPair<string, double>>> dictionary)
         {
-            if (!dictionary.ContainsKey(key))
+            if (string.IsNullOrEmpty(_userId))
             {
-                dictionary.Add(key, new List<BadgeKeeperPair<string, double>>());
+                throw new Exceptions.BadgeKeeperException("User Id property is not configured.");
+            }
+
+            if (!dictionary.ContainsKey(_userId))
+            {
+                dictionary.Add(_userId, new List<BadgeKeeperPair<string, double>>());
             }
 
             BadgeKeeperPair<string, double> pair = new BadgeKeeperPair<string, double>(key, value);
-            dictionary[key].Add(pair);
+            dictionary[_userId].Add(pair);
         }
     }
 }

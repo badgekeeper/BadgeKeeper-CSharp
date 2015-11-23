@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BadgeKeeper.Sample.Windows"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BadgeKeeper.Sample.WindowsPhone", "BadgeKeeper.Sample\BadgeKeeper.Sample.WindowsPhone\BadgeKeeper.Sample.WindowsPhone.csproj", "{536440BD-1B8D-405B-A60B-6C41883F206F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BadgeKeeper.Sample.Console", "BadgeKeeper.Sample\BadgeKeeper.Sample.Console\BadgeKeeper.Sample.Console.csproj", "{4EF876C1-9562-4B0A-9903-73EC76F8F62B}"
+EndProject
 Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
 		BadgeKeeper.Sample\BadgeKeeper.Sample.Shared\BadgeKeeper.Sample.Shared.projitems*{9e7c2754-ad6e-4b1b-bb9c-eddc0de1fe11}*SharedItemsImports = 13
@@ -74,6 +76,22 @@ Global
 		{536440BD-1B8D-405B-A60B-6C41883F206F}.Release|x86.ActiveCfg = Release|x86
 		{536440BD-1B8D-405B-A60B-6C41883F206F}.Release|x86.Build.0 = Release|x86
 		{536440BD-1B8D-405B-A60B-6C41883F206F}.Release|x86.Deploy.0 = Release|x86
+		{4EF876C1-9562-4B0A-9903-73EC76F8F62B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4EF876C1-9562-4B0A-9903-73EC76F8F62B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4EF876C1-9562-4B0A-9903-73EC76F8F62B}.Debug|ARM.ActiveCfg = Debug|Any CPU
+		{4EF876C1-9562-4B0A-9903-73EC76F8F62B}.Debug|ARM.Build.0 = Debug|Any CPU
+		{4EF876C1-9562-4B0A-9903-73EC76F8F62B}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{4EF876C1-9562-4B0A-9903-73EC76F8F62B}.Debug|x64.Build.0 = Debug|Any CPU
+		{4EF876C1-9562-4B0A-9903-73EC76F8F62B}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{4EF876C1-9562-4B0A-9903-73EC76F8F62B}.Debug|x86.Build.0 = Debug|Any CPU
+		{4EF876C1-9562-4B0A-9903-73EC76F8F62B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4EF876C1-9562-4B0A-9903-73EC76F8F62B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4EF876C1-9562-4B0A-9903-73EC76F8F62B}.Release|ARM.ActiveCfg = Release|Any CPU
+		{4EF876C1-9562-4B0A-9903-73EC76F8F62B}.Release|ARM.Build.0 = Release|Any CPU
+		{4EF876C1-9562-4B0A-9903-73EC76F8F62B}.Release|x64.ActiveCfg = Release|Any CPU
+		{4EF876C1-9562-4B0A-9903-73EC76F8F62B}.Release|x64.Build.0 = Release|Any CPU
+		{4EF876C1-9562-4B0A-9903-73EC76F8F62B}.Release|x86.ActiveCfg = Release|Any CPU
+		{4EF876C1-9562-4B0A-9903-73EC76F8F62B}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -12,17 +12,21 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+using System.Runtime.Serialization;
+
 namespace BadgeKeeper.Objects.Models
 {
     /// <summary>
     /// Extended BadgeKeeperAchievement for User.
     /// Contains extra field with status achievement for specified user.
     /// </summary>
+    [DataContract]
     public class BadgeKeeperUserAchievement : BadgeKeeperAchievement
     {
         /// <summary>
         /// If True - user unlocked the achievement. Otherwise - False.
         /// </summary>
+        [DataMember]
         public readonly bool IsUnlocked;
     }
 }

@@ -5,10 +5,14 @@
     xmlns:local="using:BadgeKeeper.Sample"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    mc:Ignorable="d"
-    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    mc:Ignorable="d">
 
-    <Grid>
-
-    </Grid>
+    <StackPanel VerticalAlignment="Center">
+        <TextBox x:Name="UserIdTextBox" PlaceholderText="User Id" HorizontalAlignment="Stretch" Margin="30 10 30 10"></TextBox>
+        <Button x:Name="GetProjectButton" HorizontalAlignment="Stretch" Margin="30 10 30 10" Click="GetProjectAchievementsClick">Get Project achievements</Button>
+        <Button x:Name="GetAchievementsButton" HorizontalAlignment="Stretch" Margin="30 10 30 10" Click="GetUserAchievementsClick">Get User achievements</Button>
+        <Button x:Name="PostVariablesButton" HorizontalAlignment="Stretch" Margin="30 10 30 10" Click="PostUserValuesClick">Post User variables</Button>
+        <Button x:Name="IncrementVariablesButton" HorizontalAlignment="Stretch" Margin="30 10 30 10" Click="IncrementUserValuesClick">Increment User achievements</Button>
+        <TextBox x:Name="ResponseTextBox" HorizontalAlignment="Stretch" Margin="30 10 30 10" Height="150" TextWrapping="Wrap" AcceptsReturn="True" PlaceholderText="Response"></TextBox>
+    </StackPanel>
 </Page>
