@@ -80,12 +80,11 @@ namespace BadgeKeeper.Network
                 client.DownloadStringAsync(new Uri(url));
             }
 #else
-            using (var client = new HttpClient())
-            {
-                client.DefaultRequestHeaders.Accept.Clear();
-                client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-                client.GetAsync(url).ContinueWith(task => ProcessPortableResponse(task, onSuccess, onError));
-            }
+            var client = new HttpClient();
+            client.Timeout = TimeSpan.FromSeconds(30);
+            client.DefaultRequestHeaders.Accept.Clear();
+            client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+            client.GetAsync(url).ContinueWith(task => ProcessPortableResponse(task, onSuccess, onError), TaskScheduler.FromCurrentSynchronizationContext());
 #endif
         }
 
@@ -106,12 +105,11 @@ namespace BadgeKeeper.Network
                 client.UploadStringAsync(new Uri(url), "POST", body);
             }
 #else
-            using (var client = new HttpClient())
-            {
-                client.DefaultRequestHeaders.Accept.Clear();
-                client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-                client.PostAsync(url, new StringContent(body)).ContinueWith(task => ProcessPortableResponse(task, onSuccess, onError));
-            }
+            var client = new HttpClient();
+            client.Timeout = TimeSpan.FromSeconds(30);
+            client.DefaultRequestHeaders.Accept.Clear();
+            client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+            client.PostAsync(url, new StringContent(body)).ContinueWith(task => ProcessPortableResponse(task, onSuccess, onError), TaskScheduler.FromCurrentSynchronizationContext());
 #endif
         }
 
@@ -125,24 +123,36 @@ namespace BadgeKeeper.Network
         /// <param name="onError">Error callback</param>
         private void ProcessPortableResponse<ResponseType>(Task<HttpResponseMessage> task, Action<ResponseType> onSuccess, Action<BadgeKeeperResponseError> onError)
         {
-            if (task.Result.IsSuccessStatusCode)
+            if (task.IsFaulted)
             {
-                task.Result.Content.ReadAsStringAsync().ContinueWith(content =>
-                {
-                    BadgeKeeperResponse<ResponseType> response = FromJson<BadgeKeeperResponse<ResponseType>>(content.Result);
-                    if (response.Error != null)
-                    {
-                        onError(response.Error);
-                    }
-                    else
-                    {
-                        onSuccess(response.Result);
-                    }
-                });
+                onError(new BadgeKeeperResponseError(-1, task.Exception != null ? task.Exception.Message : "Internal server error."));
+            }
+            else if (task.IsCanceled)
+            {
+                onError(new BadgeKeeperResponseError(-2, "Request cancelled."));
             }
             else
             {
-                onError(new BadgeKeeperResponseError(-1, "Internal server error."));
+                HttpResponseMessage message = task.Result;
+                if (task.Result.IsSuccessStatusCode)
+                {
+                    task.Result.Content.ReadAsStringAsync().ContinueWith(content =>
+                    {
+                        var result = FromJson<BadgeKeeperResponse<ResponseType>>(content.Result);
+                        if (result.Error != null)
+                        {
+                            onError(result.Error);
+                        }
+                        else
+                        {
+                            onSuccess(result.Result);
+                        }
+                    });
+                }
+                else
+                {
+                    onError(new BadgeKeeperResponseError(-1, "Internal server error."));
+                }
             }
         }
 #else

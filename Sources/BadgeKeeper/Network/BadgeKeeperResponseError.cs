@@ -12,20 +12,25 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+using System.Runtime.Serialization;
+
 namespace BadgeKeeper.Network
 {
     /// <summary>
     /// Error details in case of bad request
     /// </summary>
+    [DataContract]
     public class BadgeKeeperResponseError
     {
         /// <summary>
         /// Error code in case of bad request.
         /// </summary>
+        [DataMember]
         public int Code;
         /// <summary>
         /// Error message in case of bad request.
         /// </summary>
+        [DataMember]
         public string Message;
 
         /// <summary>

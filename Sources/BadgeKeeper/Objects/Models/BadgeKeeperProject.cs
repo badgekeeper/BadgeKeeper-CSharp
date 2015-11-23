@@ -12,28 +12,35 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+using System.Runtime.Serialization;
+
 namespace BadgeKeeper.Objects.Models
 {
     /// <summary>
     /// Contains all information about Project in Badge Keeper service.
     /// </summary>
+    [DataContract]
     public class BadgeKeeperProject
     {
         /// <summary>
         /// Badge Keeper project title.
         /// </summary>
+        [DataMember]
         public readonly string Title;
         /// <summary>
         /// Badge Keeper project description.
         /// </summary>
+        [DataMember]
         public readonly string Description;
         /// <summary>
         /// Badge Keeper project icon.
         /// </summary>
+        [DataMember]
         public readonly string Icon;
         /// <summary>
         /// Array of Badge Keeper achievements.
         /// </summary>
+        [DataMember]
         public readonly BadgeKeeperAchievement[] Achievements;
     }
 }

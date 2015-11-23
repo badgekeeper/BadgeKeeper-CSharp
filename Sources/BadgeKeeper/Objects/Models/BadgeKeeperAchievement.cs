@@ -12,28 +12,35 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+using System.Runtime.Serialization;
+
 namespace BadgeKeeper.Objects.Models
 {
     /// <summary>
     /// Present general element in Badge Keeper service - achievement.
     /// </summary>
+    [DataContract]
     public class BadgeKeeperAchievement
     {
         /// <summary>
         /// Title of Achievement.
         /// </summary>
+        [DataMember]
         public readonly string DisplayName;
         /// <summary>
         /// Description of Achievement.
         /// </summary>
+        [DataMember]
         public readonly string Description;
         /// <summary>
         /// Base64 string of unlocked icon for achievement if exist.
         /// </summary>
+        [DataMember]
         public readonly string UnlockedIcon;
         /// <summary>
         /// Base64 string of locked icon for achievement if exist.
         /// </summary>
+        [DataMember]
         public readonly string LockedIcon;
     }
 }

@@ -1,7 +1,7 @@
 ﻿properties { 
   $majorVersion = "0.1"
-  $majorWithReleaseVersion = "0.1.2"
-  $nugetPrelease = "beta1"
+  $majorWithReleaseVersion = "0.1.3"
+  $nugetPrelease = "release"
   $version = GetVersion $majorWithReleaseVersion
   $packageId = "BadgeKeeper"
   $buildNuGet = $true
@@ -16,8 +16,8 @@
   $workingSourceDir = "$workingDir\Sources"
   $builds = @(
     @{Name = "BadgeKeeper"; BuildFunction = "MSBuildBuild"; Constants=""; FinalDir="Net45"; NuGetDir = "net45"; Framework="net-4.0"},
-    @{Name = "BadgeKeeper.Portable"; BuildFunction = "MSBuildBuild"; Constants="PORTABLE"; FinalDir="Portable"; NuGetDir = "portable-net45+sl50+netcore45+wpa81+wp8"; Framework="net-4.0"},
-    @{Name = "BadgeKeeper.Portable40"; BuildFunction = "MSBuildBuild"; Constants="PORTABLE40"; FinalDir="Portable40"; NuGetDir = "portable-net4+sl50+netcore45+wpa81+wp8"; Framework="net-4.0"},
+    @{Name = "BadgeKeeper.Portable"; BuildFunction = "MSBuildBuild"; Constants="PORTABLE"; FinalDir="Portable"; NuGetDir = "portable-net45+wp80+win8+wpa81"; Framework="net-4.0"},
+    @{Name = "BadgeKeeper.Portable40"; BuildFunction = "MSBuildBuild"; Constants="PORTABLE40"; FinalDir="Portable40"; NuGetDir = "portable-net40+sl5+wp80+win8+wpa81"; Framework="net-4.0"},
     @{Name = "BadgeKeeper.Net40"; BuildFunction = "MSBuildBuild"; Constants="NET40"; FinalDir="Net40"; NuGetDir = "net40"; Framework="net-4.0"},
     @{Name = "BadgeKeeper.Net35"; BuildFunction = "MSBuildBuild"; Constants="NET35"; FinalDir="Net35"; NuGetDir = "net35"; Framework="net-2.0"}
   )
@@ -135,6 +135,12 @@ function MSBuildBuild($build)
 {
   $name = $build.Name
   $finalDir = $build.FinalDir
+  
+  Write-Host
+  Write-Host "Restoring $workingSourceDir\$name.sln" -ForegroundColor Green
+  [Environment]::SetEnvironmentVariable("EnableNuGetPackageRestore", "true", "Process")
+  exec { .\Build\NuGet.exe update -self }
+  exec { .\Build\NuGet.exe restore "$workingSourceDir\$name.sln" -verbosity detailed -configfile $workingSourceDir\nuget.config | Out-Default } "Error restoring $name"
 
   $constants = GetConstants $build.Constants
 
