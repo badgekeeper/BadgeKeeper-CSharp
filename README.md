@@ -6,138 +6,97 @@ More information you can find here: [Badge Keeper official site](https://badgeke
 
 Test your project from web browser here: [Badge Keeper Api](https://api.badgekeeper.net/swagger/ui/index)
 
-[![Build Status](https://travis-ci.org/badgekeeper/BadgeKeeper-Android.svg?branch=master)](https://travis-ci.org/badgekeeper/BadgeKeeper-iOS)
-[![Maven Central](https://img.shields.io/maven-central/v/net.badgekeeper.android/badgekeeper.svg)](http://search.maven.org/#artifactdetails%7Cnet.badgekeeper.android%7Cbadgekeeper%7C0.1.5%7C)
-[![Version](https://img.shields.io/bintray/v/badgekeeper/maven/badgekeeper.svg)](https://bintray.com/badgekeeper/maven/badgekeeper/_latestVersion)
+[![Build Status](https://travis-ci.org/badgekeeper/BadgeKeeper-CSharp.svg?branch=master)](https://travis-ci.org/badgekeeper/BadgeKeeper-CSharp)
+[![Version](https://img.shields.io/nuget/v/BadgeKeeper.svg)](https://www.nuget.org/packages/BadgeKeeper/)
 [![License](https://img.shields.io/badge/license-Apache%20License%2C%20Version%202.0-blue.svg)](http://www.apache.org/licenses/LICENSE-2.0)
 
 ## Getting Started
 
-Using Gradle:
+Using [Nuget](https://www.nuget.org/packages/BadgeKeeper/):
 ```
-compile 'net.badgekeeper.android:badgekeeper:0.1.5'
-```
-
-Using Maven:
-```
-<dependency>
-    <groupId>net.badgekeeper.android</groupId>
-    <artifactId>badgekeeper</artifactId>
-    <version>0.1.5</version>
-</dependency>
+Install-Package BadgeKeeper
 ```
 
 ## Usage
 
 ### Basic Initialization
 
-```java
-BadgeKeeper.setContext(this); // this = Context object
-BadgeKeeper.setProjectId("Project Id from admin panel");
-BadgeKeeper.setUserId("Your client id");
-BadgeKeeper.setShouldLoadIcons(true); // default is false
+```csharp
+BadgeKeeper.SetProjectId("Project Id from admin panel");
+BadgeKeeper.SetUserId("Your client id");
+BadgeKeeper.SetShouldLoadIcons(true); // default is false
 ```
 
 That's all settings that need to be configured.
 
-### Callbacks
+### Lambda or Actions
 
-There are four callbacks that we will use to receive results from Badge Keeper service:
-
-```java
-// 1 - Returns error code and error message if something goes wrong
-public interface BadgeKeeperErrorCallback {
-    public void onError(int code, String message);
-}
-
-// 2 - Returns array of BadgeKeeperAchievement elements
-public interface BadgeKeeperProjectAchievementsCallback extends BadgeKeeperErrorCallback {
-    public void onSuccess(BadgeKeeperAchievement[] achievements);
-}
-
-// 3 - Returns array of BadgeKeeperUserAchievement elements
-public interface BadgeKeeperUserAchievementsCallback extends BadgeKeeperErrorCallback {
-    public void onSuccess(BadgeKeeperUserAchievement[] achievements);
-}
-
-// 4 - Returns array of BadgeKeeperUnlockedAchievement elements
-public interface BadgeKeeperAchievementsUnlockedCallback extends BadgeKeeperErrorCallback {
-    public void onSuccess(BadgeKeeperUnlockedAchievement[] achievements);
-}
-```
+Badge Keeper uses callback system to get results. You can choose which one is better for your: lambda or actions.
+To simplify code blocks we will continue using lambda below.
 
 ### Get project achievements (no userId required)
 
-```java
-BadgeKeeper.getProjectAchievements(new BadgeKeeperProjectAchievementsCallback() {
-	@Override
-    public void onSuccess(BadgeKeeperAchievement[] achievements) {
-		// Put logic here
-	}
-	
-	@Override
-    public void onError(int code, String message) {
-    	// Put logic here
-	}
-});
+```csharp
+BadgeKeeper.GetProjectAchievements(
+  (BadgeKeeperAchievement[] achievements) =>
+  {
+    // Put logic here
+  },
+  
+  (BadgeKeeperResponseError error) => {
+    // Put logic here
+  });
 ```
 
 ### Get user achievements
 
-```java
-BadgeKeeper.getUserAchievements(new BadgeKeeperUserAchievementsCallback() {
-    @Override
-    public void onSuccess(BadgeKeeperUserAchievement[] achievements) {
-    	// Put logic here
-    }
-	
-	@Override
-	public void onError(int code, String message) {
-		// Put logic here
-	}
-});
+```csharp
+BadgeKeeper.GetUserAchievements(
+  (BadgeKeeperUserAchievement[] achievements) =>
+  {
+    // Put logic here
+  },
+  
+  (BadgeKeeperResponseError error) => {
+    // Put logic here
+  });
 ```
 
 ### Post user variables and validate completed achievements
 
-```java
-BadgeKeeper.preparePostKeyWithValue("x", 0);
+```csharp
+BadgeKeeper.PreparePostKeyWithValue("x", 0);
 
-BadgeKeeper.postPreparedValues(new BadgeKeeperAchievementsUnlockedCallback() {
-	@Override
-	public void onSuccess(BadgeKeeperUnlockedAchievement[] achievements) {
-		// Put logic here
-	}
-
-	@Override
-	public void onError(int code, String message) {
-		// Put logic here
-    }
-});
+BadgeKeeper.PostPreparedValues(
+  (BadgeKeeperUnlockedAchievement[] achievements) =>
+  {
+    // Put logic here
+  },
+  
+  (BadgeKeeperResponseError error) => {
+    // Put logic here
+  });
 ```
 
 ### Increment user variables and validate completed achievements
 
-```java
-BadgeKeeper.prepareIncrementKeyWithValue("x", 1);
+```csharp
+BadgeKeeper.PrepareIncrementKeyWithValue("x", 0);
 
-BadgeKeeper.incrementPreparedValues(new BadgeKeeperAchievementsUnlockedCallback() {
-	@Override
-	public void onSuccess(BadgeKeeperUnlockedAchievement[] achievements) {
-		// Put logic here
-	}
-
-	@Override
-	public void onError(int code, String message) {
-		// Put logic here
-    }
-});
+BadgeKeeper.IncrementPreparedValues(
+  (BadgeKeeperUnlockedAchievement[] achievements) =>
+  {
+    // Put logic here
+  },
+  
+  (BadgeKeeperResponseError error) => {
+    // Put logic here
+  });
 ```
 
 ## Requirements
 
-* JDK version >=7.
-* We support all Android versions since API Level 14 (Android 4.0, 4.0.1, 4.0.2 Ice Cream Sandwich & above).
+* We support all .Net versions since 3.5 (Including universal applications, Xamarin, Asp.Net).
 
 ## License
 
