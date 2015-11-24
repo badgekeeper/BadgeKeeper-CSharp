@@ -1,0 +1,18 @@
+language: csharp
+
+install:
+  - sudo apt-get install -y gtk-sharp2
+  - nuget restore Sources/BadgeKeeper.sln
+  - nuget restore Sources/BadgeKeeper.Net35.sln
+  - nuget restore Sources/BadgeKeeper.Net40.sln
+#  - nuget restore Sources/BadgeKeeper.Portable.sln
+#  - nuget restore Sources/BadgeKeeper.Portable40.sln
+#  - nuget restore Sources/BadgeKeeper.Samples.sln
+
+script:
+  - "xbuild /p:Configuration=Release Sources/BadgeKeeper.sln"
+  - "xbuild /p:Configuration=Release Sources/BadgeKeeper.Net35.sln"
+  - "xbuild /p:Configuration=Release Sources/BadgeKeeper.Net40.sln"
+#  - "xbuild /p:Configuration=Release Sources/BadgeKeeper.Portable.sln"
+#  - "xbuild /p:Configuration=Release Sources/BadgeKeeper.Portable40.sln"
+#  - "xbuild /p:Configuration=Release Sources/BadgeKeeper.Samples.sln"
